@@ -13,9 +13,11 @@
     </div>
     <div class="task">
         <div class="task-body" th:each="task : ${tasks}">
-            <h5 class="task-title" th:text="${task.name}"></h5>
-            <p class="task-text" th:text="${task.description}"></p>
-            <p class="task-text" th:text="'Срочность: ' + ${task.urgency}"></p>
+            <p>ID: <span th:text="${task.id}"></span></p>
+            <p>Название: <span th:text="${task.name}"></span></p>
+            <p>Описание: <span th:text="${task.description}"></span></p>
+            <p>Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>
+            <input type="checkbox" th:unless="${task.urgency}" disabled></p>
             <a th:href="@{/task-open/{id}(id=${task.id})}" class="button">Открыть</a>
             <a th:href="@{/task-update/{id}(id=${task.id})}" class="button">Обновить</a>
             <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">Удалить</a>
