@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер задач</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1 align="center">Менеджер задач</h1>
+    </div>
+    <div class="task">
+        <div class="task-body" th:each="task : ${tasks}">
+            <h5 class="task-title" th:text="${task.name}"></h5>
+            <p class="task-text" th:text="${task.description}"></p>
+            <p class="task-text" th:text="'Срочность: ' + ${task.urgency}"></p>
+            <a th:href="@{/task-open/{id}(id=${task.id})}" class="button">Открыть</a>
+            <a th:href="@{/task-update/{id}(id=${task.id})}" class="button">Обновить</a>
+            <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">Удалить</a>
+        </div>
+    </div>
+    <div th:if="${#lists.isEmpty(tasks)}">
+        <p style="font-size: 25px;">Здесь будут ваши задачи</p>
+    </div>
+    <p><a href="/task-create" class="button" id="addButton">Добавить</a></p>
+    <script th:src="@{/index.js}"></script>
+</body>
+</html>

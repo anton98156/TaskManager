@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление задача</title>
+</head>
+<body>
+    <h1 th:text="'Новая задача'">Заголовок</h1>
+    <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
+        <label for="name">Название</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="введите название">
+        <br/>
+        <label for="description">Описание</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <br/>
+        <label for="urgency">Срочность</label>
+        <input type="checkbox" th:field="*{urgency}" id="urgency">
+        <br/>
+        <input type="submit" value="Добавить">
+    </form>
+    <script th:src="@{/js/validation.js}" defer></script>
+</body>
+</html>
