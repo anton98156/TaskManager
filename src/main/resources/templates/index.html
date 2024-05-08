@@ -10,6 +10,7 @@
     <div class="container">
         <div class="task-list">
             <h2><img src="/images/taskList.png">Менеджер задач</h2>
+            <p><a href="/task-create" class="button" id="addButton">Добавить</a></p>
             <div class="task">
                 <div class="task-body" th:each="task : ${tasks}">
                     <p>Название: <span th:text="${task.name}"></span></p>
@@ -21,9 +22,8 @@
                 </div>
             </div>
             <div th:if="${#lists.isEmpty(tasks)}">
-                <p style="font-size: 25px;">Здесь будут ваши задачи</p>
+                <p style="font-size: 15px;">Здесь будут ваши задачи.</p>
             </div>
-            <p><a href="/task-create" class="button" id="addButton">Добавить</a></p>
         </div>
     </div>
     <script th:src="@{/index.js}"></script>
