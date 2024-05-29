@@ -24,13 +24,13 @@ body{
     border-radius: 10px;
 }
 
-.task-list h2{
+.title{
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.task-list h2 img{
+.title img{
     width: 25px;
     height: 27px;
     margin-left: 10px;
