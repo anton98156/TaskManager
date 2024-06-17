@@ -8,13 +8,13 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(160deg, rgb(233, 144, 19), rgba(69, 16, 111, 0.93));
+  background: linear-gradient(160deg, rgb(176, 176, 175), rgba(0, 0, 0, 0.93));
 }
 
 .task-list {
   width: 100%;
   max-width: 690px;
-  background: #fff;
+  background: #d0d0d0;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
@@ -38,6 +38,15 @@ body {
   margin-right: 10px;
 }
 .task-list .task-body {
+  position: relative;
   padding: 10px 0px;
-  border-top: 3px solid black;
+  border-top: 4px solid black;
+  background-color: white;
+  margin: 7px 0px;
+  border-radius: 9px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.task-list .task :hover {
+  transform: scale(1.05);
 }/*# sourceMappingURL=main.css.map */
