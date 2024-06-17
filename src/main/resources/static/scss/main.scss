@@ -6,14 +6,9 @@
 }
 
 body {
-    background: linear-gradient(117deg, rgb(233, 144, 19), rgb(69 16 111 / 93%));
-}
-
-.container {
     width: 100vw;
     height: 100vh;
-    padding: 12px;
-    box-sizing: border-box;
+    background: linear-gradient(160deg, rgb(233, 144, 19), rgb(69 16 111 / 93%));
 }
 
 .task-list {
@@ -23,16 +18,23 @@ body {
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
-}
 
-.main-hdr {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    .main-hdr {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    
+        img {
+            width: 35px;
+            height: 37px;
+            margin-left: 10px;
+        }
+    }
 
-    img {
-        width: 35px;
-        height: 37px;
-        margin-left: 10px;
+    .task {
+        &-body {
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+        }
     }
 }
