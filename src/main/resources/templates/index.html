@@ -9,14 +9,12 @@
 <body>
     <div class="task-list">
         <div class="main-hdr">
-            <h2><img src="/images/taskList.png">Менеджер задач</h2>
+            <h2><img src="/images/taskList.png">  Менеджер задач</h2>
         </div>
         <p><a href="/task-create" class="button" id="addButton">Добавить</a></p>
         <div class="task">
             <div class="task-body" th:each="task : ${tasks}">
-                <p>Название: <span th:text="${task.name}"></span></p>
-                <p>Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>
-                <input type="checkbox" th:unless="${task.urgency}" disabled></p>
+                <p><span th:text="${task.name}"></span></p>
                 <a th:href="@{/task-open/{id}(id=${task.id})}" class="button">Открыть</a>
                 <a th:href="@{/task-update/{id}(id=${task.id})}" class="button">Обновить</a>
                 <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">Удалить</a>
