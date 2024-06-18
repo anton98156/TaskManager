@@ -13,16 +13,24 @@ body {
 
 .task-list {
     width: 100%;
-    max-width: 690px;
+    max-width: 710px;
     background: #d0d0d0;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
-    border-radius: 10px;
+    border-radius: 40px;
 
     .main-hdr {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+
+        .add-button {
+            transition: transform 0.3s;
+            
+            :hover {
+                transform: scale(1.2);
+            }
+        }
 
         h2 {
             flex-grow: 1;
@@ -42,6 +50,7 @@ body {
 
     .task {
         &-body {
+            cursor: pointer;
             position: relative;
             padding: 10px 0px;
             border-top: 4px solid black;
@@ -49,10 +58,10 @@ body {
             margin: 7px 0px;
             border-radius: 9px;
             transition: transform 0.3s;
-            cursor: pointer;
         }
         :hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
+            transform-origin: top left;
         }
     }
 }
