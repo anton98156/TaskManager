@@ -53,6 +53,18 @@ body {
   border-radius: 9px;
   transition: transform 0.3s;
 }
+.task-list .task-body .update-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.task-list .task-body .update-button img {
+  width: 22px;
+  height: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
 .task-list .task :hover {
   transform: scale(1.04);
   transform-origin: top left;
