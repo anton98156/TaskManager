@@ -10,11 +10,9 @@
     <div class="task-list">
         <div class="main-hdr">
             <h2><img src="/images/taskList.png">  Менеджер задач</h2>
-            <p>
-                <a href="/task-create" class="add-button" id="addButton">
-                    <img src="/images/plus.png" alt="Добавить">
-                </a>
-            </p>
+            <a href="/task-create" class="add-button" id="addButton">
+                <img src="/images/plus.png" alt="Добавить">
+            </a>
         </div>
         <div class="task">
             <div th:each="task : ${tasks}" class="task-body" th:attr="data-id=${task.id}">
