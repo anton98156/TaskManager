@@ -11,8 +11,11 @@
         <p>ID: <span th:text="${task.id}"></span></p>
         <p>Название: <span th:text="${task.name}"></span></p>
         <p>Описание: <span th:text="${task.description}"></span></p>
-        <p>Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>
+        <p>Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
         <input type="checkbox" th:unless="${task.urgency}" disabled></p>
+        <p><span th:text="${task.name}"></span></p>
+        <a th:href="@{/task-update/{id}(id=${task.id})}" class="button">Обновить</a>
+        <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">Удалить</a>
     </div>
     <p><a href="/" class="button" id="simpleButton">Все задачи</a></p>
 </body>
