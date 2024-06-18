@@ -78,6 +78,6 @@ body {
   margin-top: 3px;
 }
 .task-list .task :hover {
-  transform: scale(1.04);
+  transform: scale(1.06);
   transform-origin: top left;
 }/*# sourceMappingURL=main.css.map */
