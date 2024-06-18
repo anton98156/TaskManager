@@ -13,14 +13,14 @@
         </div>
         <p><a href="/task-create" class="button" id="addButton">Добавить</a></p>
         <div class="task">
-            <div class="task-body" th:each="task : ${tasks}">
+            <div th:each="task : ${tasks}" class="task-body" th:attr="data-id=${task.id}">
                 <p><span th:text="${task.name}"></span></p>
-                <a th:href="@{/task-open/{id}(id=${task.id})}" class="button">Открыть</a>
             </div>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
             <p style="font-size: 15px;">Здесь будут ваши задачи.</p>
         </div>
     </div>
+    <script th:src="@{/js/index.js}" defer></script>
 </body>
 </html>

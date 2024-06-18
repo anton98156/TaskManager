@@ -8,7 +8,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(160deg, rgb(176, 176, 175), rgba(0, 0, 0, 0.93));
+  background: linear-gradient(160deg, rgb(195, 195, 195), rgba(40, 40, 40, 0.93));
 }
 
 .task-list {
