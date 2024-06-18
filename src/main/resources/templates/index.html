@@ -22,9 +22,9 @@
                 <a th:href="@{/task-update/{id}(id=${task.id})}" class="update-button">
                     <img src="/images/pencil.png" alt="Обновить">
                 </a>
-                <!-- <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">
+                <a th:href="@{/task-delete/{id}(id=${task.id})}" class="delete-button">
                     <img src="/images/x.png" alt="Удалить">
-                </a> -->
+                </a>
             </div>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
