@@ -31,14 +31,14 @@ body {
   align-items: center;
   margin-bottom: 20px;
 }
-.menu__hdr--app-name {
+.menu__hdr--centered {
   flex-grow: 1;
   display: flex;
   align-items: center;
   margin-right: 10px;
   font-size: 31px;
 }
-.menu__hdr--icon-buttom {
+.menu__hdr-icon {
   width: 35px;
   height: 37px;
   margin-left: 10px;
@@ -54,31 +54,15 @@ body {
   border-radius: 9px;
   transition: transform 0.4s;
 }
-.menu__task__updateButton {
+.menu__button {
   position: absolute;
   top: 0;
   right: 0;
 }
-.menu__task__updateButton img {
+.menu__button--img-custom {
   width: 22px;
   height: 24px;
   margin-left: 10px;
   margin-right: 45px;
   margin-top: 3px;
-}
-.menu__task__deleteButton {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.menu__task__deleteButton img {
-  width: 22px;
-  height: 24px;
-  margin-left: 10px;
-  margin-right: 15px;
-  margin-top: 3px;
-}
-.menu :hover {
-  transform: scale(1.04);
-  transform-origin: top left;
 }/*# sourceMappingURL=main.css.map */

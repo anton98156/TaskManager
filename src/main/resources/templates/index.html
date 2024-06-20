@@ -9,20 +9,21 @@
 <body>
     <div class="menu">
         <div class="menu__hdr">
-            <h2 class="menu__hdr--app-name"><img class="menu__hdr--icon-buttom" src="/images/taskList.png">Менеджер задач</h2>
+            <img class="menu__hdr-icon" src="/images/taskList.png">
+            <h2 class="menu__hdr--centered">Менеджер задач</h2>
             <a class="button" href="/task-create">
-                <img class="menu__hdr--icon-buttom" src="/images/plus.png" alt="Добавить">
+                <img class="menu__hdr-icon" src="/images/plus.png" alt="Добавить">
             </a>
         </div>
         <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
             <p>
                 <span th:text="${task.name}"></span>
             </p>
-            <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__task__updateButton" id="updateButton">
-                <img src="/images/pencil.png" alt="Обновить">
+            <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__button" id="button-update">
+                <img class="button menu__button--img-custom" src="/images/pencil.png" alt="Обновить">
             </a>
-            <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__task__deleteButton" id="deleteButton">
-                <img src="/images/x.png" alt="Удалить">
+            <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__button" id="button-delete">
+                <img class="button menu__button--img-custom" src="/images/x.png" alt="Удалить">
             </a>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
