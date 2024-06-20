@@ -1,4 +1,5 @@
-menu {
+.menu {
+
     width: 100%;
     max-width: 740px;
     background: #d0d0d0;
@@ -10,29 +11,21 @@ menu {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+    }
 
-        &__addButton {
-            transition: transform 0.3s;
-            
-            :hover {
-                transform: scale(1.2);
-            }
-        }
+    &__icon {
+        width: 35px;
+        height: 37px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-        h2 {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-            font-size: 31px;
-        }
-    
-        img {
-            width: 35px;
-            height: 37px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
+    &__hdr-text {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        font-size: 31px;
     }
 
     &__task {

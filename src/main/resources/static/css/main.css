@@ -11,7 +11,14 @@ body {
   background: linear-gradient(160deg, rgb(195, 195, 195), rgba(40, 40, 40, 0.93));
 }
 
-menu {
+.button {
+  transition: transform 0.3s;
+}
+.button :hover {
+  transform: scale(1.2);
+}
+
+.menu {
   width: 100%;
   max-width: 740px;
   background: #d0d0d0;
@@ -19,31 +26,25 @@ menu {
   padding: 40px 30px 70px;
   border-radius: 40px;
 }
-menu__hdr {
+.menu__hdr {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-menu__hdr__addButton {
-  transition: transform 0.3s;
+.menu__icon {
+  width: 35px;
+  height: 37px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-menu__hdr__addButton :hover {
-  transform: scale(1.2);
-}
-menu__hdr h2 {
+.menu__hdr-text {
   flex-grow: 1;
   display: flex;
   align-items: center;
   margin-right: 10px;
   font-size: 31px;
 }
-menu__hdr img {
-  width: 35px;
-  height: 37px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-menu__task__body {
+.menu__task__body {
   cursor: pointer;
   position: relative;
   padding: 10px 0px;
@@ -53,31 +54,31 @@ menu__task__body {
   border-radius: 9px;
   transition: transform 0.4s;
 }
-menu__task__body__updateButton {
+.menu__task__body__updateButton {
   position: absolute;
   top: 0;
   right: 0;
 }
-menu__task__body__updateButton img {
+.menu__task__body__updateButton img {
   width: 22px;
   height: 24px;
   margin-left: 10px;
   margin-right: 45px;
   margin-top: 3px;
 }
-menu__task__body__deleteButton {
+.menu__task__body__deleteButton {
   position: absolute;
   top: 0;
   right: 0;
 }
-menu__task__body__deleteButton img {
+.menu__task__body__deleteButton img {
   width: 22px;
   height: 24px;
   margin-left: 10px;
   margin-right: 15px;
   margin-top: 3px;
 }
-menu__task :hover {
+.menu__task :hover {
   transform: scale(1.04);
   transform-origin: top left;
 }/*# sourceMappingURL=main.css.map */
