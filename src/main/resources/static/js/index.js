@@ -1,5 +1,5 @@
 function handleTaskBodyClick() {
-    var taskBodies = document.querySelectorAll('.menu__task__body');
+    var taskBodies = document.querySelectorAll('.menu__task');
     taskBodies.forEach(function(body) {
         body.addEventListener('click', function() {
             var taskId = body.getAttribute('data-id');
@@ -13,7 +13,7 @@ function redirectToTaskOpenPage(taskId) {
 }
 
 function addTaskButtonBehavior() {
-    var taskBodies = document.querySelectorAll('.menu__task__body');
+    var taskBodies = document.querySelectorAll('.menu__task');
 
     taskBodies.forEach(function(taskBody) {
         taskBody.querySelector('#updateButton').style.display = 'none';

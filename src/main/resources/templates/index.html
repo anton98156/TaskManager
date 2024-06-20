@@ -14,18 +14,16 @@
                 <img class="menu__hdr--icon-buttom" src="/images/plus.png" alt="Добавить">
             </a>
         </div>
-        <div class="menu__task">
-            <div th:each="task : ${tasks}" class="menu__task__body" th:attr="data-id=${task.id}">
-                <p>
-                    <span th:text="${task.name}"></span>
-                </p>
-                <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__task__body__updateButton" id="updateButton">
-                    <img src="/images/pencil.png" alt="Обновить">
-                </a>
-                <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__task__body__deleteButton" id="deleteButton">
-                    <img src="/images/x.png" alt="Удалить">
-                </a>
-            </div>
+        <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
+            <p>
+                <span th:text="${task.name}"></span>
+            </p>
+            <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__task__updateButton" id="updateButton">
+                <img src="/images/pencil.png" alt="Обновить">
+            </a>
+            <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__task__deleteButton" id="deleteButton">
+                <img src="/images/x.png" alt="Удалить">
+            </a>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
             <p style="font-size: 15px;">Здесь будут ваши задачи.</p>
