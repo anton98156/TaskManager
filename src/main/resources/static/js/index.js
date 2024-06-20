@@ -1,5 +1,5 @@
 function handleTaskBodyClick() {
-    var taskBodies = document.querySelectorAll('.task-body');
+    var taskBodies = document.querySelectorAll('.menu__task__body');
     taskBodies.forEach(function(body) {
         body.addEventListener('click', function() {
             var taskId = body.getAttribute('data-id');
@@ -13,22 +13,22 @@ function redirectToTaskOpenPage(taskId) {
 }
 
 function addTaskButtonBehavior() {
-    var taskBodies = document.querySelectorAll('.task-body');
+    var taskBodies = document.querySelectorAll('.menu__task__body');
 
     taskBodies.forEach(function(taskBody) {
-        taskBody.querySelector('.update-button').style.display = 'none';
-        taskBody.querySelector('.delete-button').style.display = 'none';
+        taskBody.querySelector('.menu__task__body__updateButton').style.display = 'none';
+        taskBody.querySelector('.menu__task__body__deleteButton').style.display = 'none';
     });
 
     taskBodies.forEach(function(taskBody) {
         taskBody.addEventListener('mouseover', function() {
-            this.querySelector('.update-button').style.display = 'inline-block';
-            this.querySelector('.delete-button').style.display = 'inline-block';
+            this.querySelector('.menu__task__body__updateButton').style.display = 'inline-block';
+            this.querySelector('.menu__task__body__deleteButton').style.display = 'inline-block';
         });
 
         taskBody.addEventListener('mouseout', function() {
-            this.querySelector('.update-button').style.display = 'none';
-            this.querySelector('.delete-button').style.display = 'none';
+            this.querySelector('.menu__task__body__updateButton').style.display = 'none';
+            this.querySelector('.menu__task__body__deleteButton').style.display = 'none';
         });
     });
 }

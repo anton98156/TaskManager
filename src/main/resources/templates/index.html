@@ -7,22 +7,22 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <div class="task-list">
-        <div class="main-hdr">
+    <div class="menu">
+        <div class="menu__hdr">
             <h2><img src="/images/taskList.png">  Менеджер задач</h2>
-            <a href="/task-create" class="add-button" id="addButton">
+            <a href="/task-create" class="menu__hdr__addButton" id="addButton">
                 <img src="/images/plus.png" alt="Добавить">
             </a>
         </div>
-        <div class="task">
-            <div th:each="task : ${tasks}" class="task-body" th:attr="data-id=${task.id}">
+        <div class="menu__task">
+            <div th:each="task : ${tasks}" class="menu__task__body" th:attr="data-id=${task.id}">
                 <p>
                     <span th:text="${task.name}"></span>
                 </p>
-                <a th:href="@{/task-update/{id}(id=${task.id})}" class="update-button">
+                <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__task__body__updateButton">
                     <img src="/images/pencil.png" alt="Обновить">
                 </a>
-                <a th:href="@{/task-delete/{id}(id=${task.id})}" class="delete-button">
+                <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__task__body__deleteButton">
                     <img src="/images/x.png" alt="Удалить">
                 </a>
             </div>

@@ -11,20 +11,20 @@ body {
     background: linear-gradient(160deg, rgb(195, 195, 195), rgba(40, 40, 40, 0.93));
 }
 
-.task-list {
+.menu {
     width: 100%;
-    max-width: 710px;
+    max-width: 740px;
     background: #d0d0d0;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 40px;
 
-    .main-hdr {
+    &__hdr {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
 
-        .add-button {
+        &__addButton {
             transition: transform 0.3s;
             
             :hover {
@@ -48,8 +48,8 @@ body {
         }
     }
 
-    .task {
-        &-body {
+    &__task {
+        &__body {
             cursor: pointer;
             position: relative;
             padding: 10px 0px;
@@ -57,9 +57,9 @@ body {
             background-color: white;
             margin: 7px 0px;
             border-radius: 9px;
-            transition: transform 0.3s;
+            transition: transform 0.4s;
 
-            .update-button {
+            &__updateButton {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -73,7 +73,7 @@ body {
                 }
             }
 
-            .delete-button {
+            &__deleteButton {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -89,7 +89,7 @@ body {
         }
 
         :hover {
-            transform: scale(1.06);
+            transform: scale(1.04);
             transform-origin: top left;
         }
     }
