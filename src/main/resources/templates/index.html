@@ -20,10 +20,10 @@
                 <span th:text="${task.name}"></span>
             </p>
             <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__button" id="button-update">
-                <img class="button menu__button--img-custom" src="/images/pencil.png" alt="Обновить">
+                <img class="menu__button--img-custom" src="/images/pencil.png" alt="Обновить">
             </a>
             <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__button" id="button-delete">
-                <img class="button menu__button--img-custom" src="/images/x.png" alt="Удалить">
+                <img class="menu__button--img-custom" src="/images/x.png" alt="Удалить">
             </a>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">

@@ -5,7 +5,7 @@
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 40px;
-    
+
     &__hdr {
         display: flex;
         align-items: center;
@@ -36,7 +36,12 @@
         background-color: white;
         margin: 7px 0px;
         border-radius: 9px;
-        transition: transform 0.4s;
+        transition: transform 0.3s;
+    }
+
+    &__task:hover {
+        transform: scaleX(1.04) translateX(4%);
+        transform-origin: left;
     }
 
 

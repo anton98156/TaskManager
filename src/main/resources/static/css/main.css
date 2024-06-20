@@ -52,7 +52,11 @@ body {
   background-color: white;
   margin: 7px 0px;
   border-radius: 9px;
-  transition: transform 0.4s;
+  transition: transform 0.3s;
+}
+.menu__task:hover {
+  transform: scaleX(1.04) translateX(4%);
+  transform-origin: left;
 }
 .menu__button {
   position: absolute;
