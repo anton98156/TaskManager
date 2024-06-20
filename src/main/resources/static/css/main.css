@@ -31,18 +31,18 @@ body {
   align-items: center;
   margin-bottom: 20px;
 }
-.menu__icon {
-  width: 35px;
-  height: 37px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.menu__hdr-text {
+.menu__hdr--app-name {
   flex-grow: 1;
   display: flex;
   align-items: center;
   margin-right: 10px;
   font-size: 31px;
+}
+.menu__hdr--icon-buttom {
+  width: 35px;
+  height: 37px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .menu__task__body {
   cursor: pointer;
