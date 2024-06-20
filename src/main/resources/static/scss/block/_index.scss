@@ -44,19 +44,17 @@
         transform-origin: left;
     }
 
-
     &__button {
         position: absolute;
         top: 0;
         right: 0;
-
-        &--img-custom {
-            width: 22px;
-            height: 24px;
-            margin-left: 10px;
-            margin-right: 45px;
-            margin-top: 3px;
-        }
     }
 
+    &__img-custom {
+        width: 22px;
+        height: 24px;
+        margin-left: 10px;
+        margin-right: 45px;
+        margin-top: 3px;
+    }
 }
