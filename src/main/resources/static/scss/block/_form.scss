@@ -1,18 +1,18 @@
-.task-form {
+.task-create {
     @extend %main-form;
 
-    .form-group {
+    &__group {
         margin-bottom: 15px;
     }
     
-    .form-label {
+    &__label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
         font-size: 14px;
     }
     
-    .form-input, .form-checkbox {
+    &__input, &__checkbox {
         width: 100%;
         padding: 8px;
         border: 1px solid #ccc;
@@ -25,12 +25,8 @@
             box-shadow: 0 0 4px #4A90E2;
         }
     }
-    
-    .form-checkbox {
-        width: auto;
-    }
-    
-    .form-submit {
+
+    &__submit {
         display: inline-block;
         width: auto;
         padding: 10px 20px;

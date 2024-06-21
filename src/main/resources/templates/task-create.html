@@ -7,39 +7,25 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-
-        <!-- <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
-            <label for="name">Название:</label>
-            <input type="text" th:field="*{name}" id="name" placeholder="введите название">
-            <br/>
-            <label for="description">Описание:</label>
-            <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
-            <br/>
-            <label for="urgency">Срочность:</label>
-            <input type="checkbox" th:field="*{urgency}" id="urgency">
-            <br/>
-            <input type="submit" value="Добавить">
-        </form> -->
-
-    <form action="#" th:action="@{/task-create}" th:object="${task}" method="post" class="task-form">
+    <form class="task-create" action="#" th:action="@{/task-create}" th:object="${task}" method="post">
         <header class="header">
             <img class="header__icon" src="/images/taskList.png">
             <h1 class="header--centered">Новая задача</h1>
         </header>
-        <div class="form-group">
-            <label for="name" class="form-label"><h3>Название:</h3></label>
-            <input type="text" th:field="*{name}" id="name" placeholder="введите название" class="form-input">
+        <div class="task-create__group">
+            <label for="name" class="task-create__label"><h3>Название:</h3></label>
+            <input type="text" th:field="*{name}" id="name" placeholder="введите название" class="task-create__input">
         </div>
-        <div class="form-group">
-            <label for="description" class="form-label">Описание:</label>
-            <input type="text" th:field="*{description}" id="description" placeholder="введите описание" class="form-input">
+        <div class="task-create__group">
+            <label for="description" class="task-create__label">Описание:</label>
+            <input type="text" th:field="*{description}" id="description" placeholder="введите описание" class="task-create__input">
         </div>
-        <div class="form-group">
-            <label for="urgency" class="form-label">Срочность:</label>
-            <input type="checkbox" th:field="*{urgency}" id="urgency" class="form-checkbox">
+        <div class="task-create__group">
+            <label for="urgency" class="task-create__label">Срочность:</label>
+            <input class="task-create__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
         </div>
-        <div class="form-group">
-            <input type="submit" value="Добавить" class="form-submit">
+        <div class="task-create__group">
+            <input type="submit" value="Добавить" class="task-create__submit">
         </div>
     </form>
     <script th:src="@{/js/validation.js}"></script>

@@ -19,7 +19,7 @@ body {
   transform: scale(1.2);
 }
 
-.task-form, .menu {
+.task-create, .menu {
   width: 100%;
   max-width: 720px;
   background: #d0d0d0;
@@ -78,31 +78,28 @@ body {
   margin-right: 45px;
 }
 
-.task-form .form-group {
+.task-create__group {
   margin-bottom: 15px;
 }
-.task-form .form-label {
+.task-create__label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 14px;
 }
-.task-form .form-input, .task-form .form-checkbox {
+.task-create__input, .task-create__checkbox {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
 }
-.task-form .form-input:focus, .task-form .form-checkbox:focus {
+.task-create__input:focus, .task-create__checkbox:focus {
   border-color: #4A90E2;
   outline: none;
   box-shadow: 0 0 4px #4A90E2;
 }
-.task-form .form-checkbox {
-  width: auto;
-}
-.task-form .form-submit {
+.task-create__submit {
   display: inline-block;
   width: auto;
   padding: 10px 20px;
@@ -113,9 +110,9 @@ body {
   font-size: 14px;
   cursor: pointer;
 }
-.task-form .form-submit:hover {
+.task-create__submit:hover {
   background-color: #357ABD;
 }
-.task-form .form-submit:active {
+.task-create__submit:active {
   background-color: #2B5E8B;
 }/*# sourceMappingURL=main.css.map */
