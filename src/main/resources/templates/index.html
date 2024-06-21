@@ -19,10 +19,10 @@
             <p>
                 <span th:text="${task.name}"></span>
             </p>
-            <a th:href="@{/task-update/{id}(id=${task.id})}" class="menu__button" id="button-update">
+            <a class="button menu__button" th:href="@{/task-update/{id}(id=${task.id})}" id="button-update">
                 <img class="menu__img-custom menu__img-custom--left" src="/images/pencil.png" alt="Обновить">
             </a>
-            <a th:href="@{/task-delete/{id}(id=${task.id})}" class="menu__button" id="button-delete">
+            <a class="button menu__button" th:href="@{/task-delete/{id}(id=${task.id})}" id="button-delete">
                 <img class="menu__img-custom menu__img-custom--right" src="/images/x.png" alt="Удалить">
             </a>
         </div>
