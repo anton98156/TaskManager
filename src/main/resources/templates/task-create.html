@@ -13,19 +13,20 @@
             <h1 class="header--centered">Новая задача</h1>
         </header>
         <div class="task-create__group">
-            <label for="name" class="task-create__label"><h3>Название:</h3></label>
-            <input type="text" th:field="*{name}" id="name" placeholder="введите название" class="task-create__input">
+            <label class="task-create__label" for="name"><h3>Название:</h3></label>
+            <input class="task-create__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
         </div>
         <div class="task-create__group">
-            <label for="description" class="task-create__label">Описание:</label>
-            <input type="text" th:field="*{description}" id="description" placeholder="введите описание" class="task-create__input">
+            <label class="task-create__label" for="description">Описание:</label>
+            <input class="task-create__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
         </div>
         <div class="task-create__group">
-            <label for="urgency" class="task-create__label">Срочность:</label>
-            <input class="task-create__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
+            <label class="task-create__label" for="urgency">Срочность: 
+                <input class="task-create__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
+            </label>
         </div>
         <div class="task-create__group">
-            <input type="submit" value="Добавить" class="task-create__submit">
+            <input class="task-create__submit" type="submit" value="Добавить">
         </div>
     </form>
     <script th:src="@{/js/validation.js}"></script>

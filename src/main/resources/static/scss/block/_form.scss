@@ -12,7 +12,7 @@
         font-size: 14px;
     }
     
-    &__input, &__checkbox {
+    &__input{
         width: 100%;
         padding: 8px;
         border: 1px solid #ccc;
@@ -26,11 +26,18 @@
         }
     }
 
+    &__checkbox {
+        width: auto;
+        max-width: 50px;
+        border-color: #000;
+        background-color: #000;
+    }
+
     &__submit {
         display: inline-block;
         width: auto;
         padding: 10px 20px;
-        background-color: #4A90E2;
+        background-color: #000;
         border: none;
         border-radius: 5px;
         color: #fff;
@@ -38,11 +45,11 @@
         cursor: pointer;
         
         &:hover {
-            background-color: #357ABD;
+            background-color: #666;
         }
         
         &:active {
-            background-color: #2B5E8B;
+            background-color: #333;
         }
     }
 }

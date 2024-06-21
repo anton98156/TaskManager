@@ -87,23 +87,29 @@ body {
   font-weight: bold;
   font-size: 14px;
 }
-.task-create__input, .task-create__checkbox {
+.task-create__input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
 }
-.task-create__input:focus, .task-create__checkbox:focus {
+.task-create__input:focus {
   border-color: #4A90E2;
   outline: none;
   box-shadow: 0 0 4px #4A90E2;
+}
+.task-create__checkbox {
+  width: auto;
+  max-width: 50px;
+  border-color: #000;
+  background-color: #000;
 }
 .task-create__submit {
   display: inline-block;
   width: auto;
   padding: 10px 20px;
-  background-color: #4A90E2;
+  background-color: #000;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -111,8 +117,8 @@ body {
   cursor: pointer;
 }
 .task-create__submit:hover {
-  background-color: #357ABD;
+  background-color: #666;
 }
 .task-create__submit:active {
-  background-color: #2B5E8B;
+  background-color: #333;
 }/*# sourceMappingURL=main.css.map */
