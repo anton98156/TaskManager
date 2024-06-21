@@ -20,7 +20,7 @@ body {
 
 .menu {
   width: 100%;
-  max-width: 740px;
+  max-width: 830px;
   background: #d0d0d0;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
@@ -55,8 +55,7 @@ body {
   transition: transform 0.3s;
 }
 .menu__task:hover {
-  transform: scaleX(1.04) translateX(4%);
-  transform-origin: left;
+  transform: scale(1.05);
 }
 .menu__button {
   position: absolute;
@@ -67,6 +66,11 @@ body {
   width: 22px;
   height: 24px;
   margin-left: 10px;
-  margin-right: 45px;
   margin-top: 3px;
+}
+.menu__img-custom--right {
+  margin-right: 15px;
+}
+.menu__img-custom--left {
+  margin-right: 45px;
 }/*# sourceMappingURL=main.css.map */
