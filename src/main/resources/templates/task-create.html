@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавление задача</title>
+    <title>Добавление задачи</title>
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <h1 th:text="'Новая задача'">Заголовок</h1>
-    <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
-        <label for="name">Название</label>
-        <input type="text" th:field="*{name}" id="name" placeholder="введите название">
-        <br/>
-        <label for="description">Описание</label>
-        <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
-        <br/>
-        <label for="urgency">Срочность</label>
-        <input type="checkbox" th:field="*{urgency}" id="urgency">
-        <br/>
-        <input type="submit" value="Добавить">
-    </form>
-    <script th:src="@{/js/validation.js}" defer></script>
+    <div class="menu">
+        <div class="menu__hdr">
+            <img class="menu__hdr-icon" src="/images/taskList.png">
+            <h1 class="menu__hdr--centered">Новая задача</h1>
+        </div>
+        <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
+            <label for="name">Название:</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="введите название">
+            <br/>
+            <label for="description">Описание:</label>
+            <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
+            <br/>
+            <label for="urgency">Срочность:</label>
+            <input type="checkbox" th:field="*{urgency}" id="urgency">
+            <br/>
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+    <script th:src="@{/js/validation.js}"></script>
 </body>
 </html>
