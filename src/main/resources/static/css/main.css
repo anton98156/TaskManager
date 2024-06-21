@@ -19,7 +19,7 @@ body {
   transform: scale(1.2);
 }
 
-.task-form, .menu {
+.task-add, .menu {
   width: 100%;
   max-width: 720px;
   background: #d0d0d0;
@@ -86,32 +86,32 @@ body {
   padding-left: 10px;
 }
 
-.task-form__group {
+.task-add__group {
   margin-bottom: 15px;
 }
-.task-form__label {
+.task-add__label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 14px;
 }
-.task-form__input {
+.task-add__input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
 }
-.task-form__input:focus {
+.task-add__input:focus {
   border-color: #4A90E2;
   outline: none;
   box-shadow: 0 0 4px #4A90E2;
 }
-.task-form__checkbox {
+.task-add__checkbox {
   width: auto;
   cursor: pointer;
 }
-.task-form__submit {
+.task-add__submit {
   display: inline-block;
   width: auto;
   padding: 10px 20px;
@@ -122,9 +122,9 @@ body {
   font-size: 14px;
   cursor: pointer;
 }
-.task-form__submit:hover {
+.task-add__submit:hover {
   background-color: #666;
 }
-.task-form__submit:active {
+.task-add__submit:active {
   background-color: #333;
 }/*# sourceMappingURL=main.css.map */

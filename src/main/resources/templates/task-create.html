@@ -7,26 +7,26 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <form class="task-form" action="#" th:action="@{/task-create}" th:object="${task}" method="post">
+    <form class="task-add" action="#" th:action="@{/task-create}" th:object="${task}" method="post">
         <header class="header">
             <img class="header__icon" src="/images/taskList.png">
             <h1 class="header--centered">Новая задача</h1>
         </header>
-        <div class="task-form__group">
-            <label class="task-form__label" for="name"><h3>Название:</h3></label>
-            <input class="task-form__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
+        <div class="task-add__group">
+            <label class="task-add__label" for="name"><h3>Название:</h3></label>
+            <input class="task-add__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
         </div>
-        <div class="task-form__group">
-            <label class="task-form__label" for="description"><h3>Описание:</h3></label>
-            <input class="task-form__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <div class="task-add__group">
+            <label class="task-add__label" for="description"><h3>Описание:</h3></label>
+            <input class="task-add__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
         </div>
-        <div class="task-form__group">
+        <div class="task-add__group">
             <label for="urgency">Срочность: 
-                <input class="task-form__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
+                <input class="task-add__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
             </label>
         </div>
-        <div class="task-form__group">
-            <input class="task-form__submit" type="submit" value="Добавить">
+        <div class="task-add__group">
+            <input class="task-add__submit" type="submit" value="Добавить">
         </div>
     </form>
     <script th:src="@{/js/validation.js}"></script>
