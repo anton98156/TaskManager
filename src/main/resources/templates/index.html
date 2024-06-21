@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="menu">
-        <div class="menu__hdr">
-            <img class="menu__hdr-icon" src="/images/taskList.png">
-            <h1 class="menu__hdr--centered">Менеджер задач</h1>
+        <header class="header">
+            <img class="header__icon" src="/images/taskList.png">
+            <h1 class="header--centered">Менеджер задач</h1>
             <a class="button" href="/task-create">
-                <img class="menu__hdr-icon" src="/images/plus.png" alt="Добавить">
+                <img class="header__icon" src="/images/plus.png" alt="Добавить">
             </a>
-        </div>
+        </header>
         <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
             <p>
                 <span th:text="${task.name}"></span>

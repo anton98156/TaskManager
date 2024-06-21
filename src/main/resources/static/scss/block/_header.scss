@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &__icon {
+        width: 35px;
+        height: 37px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    &--centered {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 31px;
+    }
+}

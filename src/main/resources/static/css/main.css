@@ -19,6 +19,25 @@ body {
   transform: scale(1.2);
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.header__icon {
+  width: 35px;
+  height: 37px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.header--centered {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 31px;
+}
+
 .menu {
   width: 100%;
   max-width: 720px;
@@ -26,24 +45,6 @@ body {
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 40px;
-}
-.menu__hdr {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.menu__hdr--centered {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  font-size: 31px;
-}
-.menu__hdr-icon {
-  width: 35px;
-  height: 37px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 .menu__task {
   cursor: pointer;
@@ -74,4 +75,54 @@ body {
 }
 .menu__img-custom--left {
   margin-right: 45px;
+}
+
+.task-form {
+  max-width: auto;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.task-form .form-group {
+  margin-bottom: 15px;
+}
+.task-form .form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.task-form .form-input, .task-form .form-checkbox {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.task-form .form-input:focus, .task-form .form-checkbox:focus {
+  border-color: #4A90E2;
+  outline: none;
+  box-shadow: 0 0 4px #4A90E2;
+}
+.task-form .form-checkbox {
+  width: auto;
+}
+.task-form .form-submit {
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #4A90E2;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.task-form .form-submit:hover {
+  background-color: #357ABD;
+}
+.task-form .form-submit:active {
+  background-color: #2B5E8B;
 }/*# sourceMappingURL=main.css.map */
