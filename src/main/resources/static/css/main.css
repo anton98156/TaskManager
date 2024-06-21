@@ -19,6 +19,15 @@ body {
   transform: scale(1.2);
 }
 
+.task-form, .menu {
+  width: 100%;
+  max-width: 720px;
+  background: #d0d0d0;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 40px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -38,14 +47,6 @@ body {
   font-size: 31px;
 }
 
-.menu {
-  width: 100%;
-  max-width: 720px;
-  background: #d0d0d0;
-  margin: 100px auto 20px;
-  padding: 40px 30px 70px;
-  border-radius: 40px;
-}
 .menu__task {
   cursor: pointer;
   position: relative;
@@ -77,14 +78,6 @@ body {
   margin-right: 45px;
 }
 
-.task-form {
-  max-width: auto;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
 .task-form .form-group {
   margin-bottom: 15px;
 }
