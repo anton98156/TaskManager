@@ -17,11 +17,11 @@
             <input class="task-create__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
         </div>
         <div class="task-create__group">
-            <label class="task-create__label" for="description">Описание:</label>
+            <label class="task-create__label" for="description"><h3>Описание:</h3></label>
             <input class="task-create__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
         </div>
         <div class="task-create__group">
-            <label class="task-create__label" for="urgency">Срочность: 
+            <label for="urgency">Срочность: 
                 <input class="task-create__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
             </label>
         </div>
