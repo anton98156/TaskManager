@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Задача</title>
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <h1 align="center" span th:text="${task.name}"></h1>
-    <div>
-        <p>ID: <span th:text="${task.id}"></span></p>
-        <p>Название: <span th:text="${task.name}"></span></p>
-        <p>Описание: <span th:text="${task.description}"></span></p>
-        <p>Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
-        <input type="checkbox" th:unless="${task.urgency}" disabled></p>
-        <a th:href="@{/task-update/{id}(id=${task.id})}" class="button">Обновить</a>
-        <a th:href="@{/task-delete/{id}(id=${task.id})}" class="button">Удалить</a>
-    </div>
-    <p><a href="/" class="button" id="simpleButton">Все задачи</a></p>
+    <form class="task task--opened">
+        <input type="hidden" th:field="*{id}" id="id">
+        <header class="header">
+            <img class="header__icon" src="/images/taskList.png">
+            <h1 class="header--centered">Просмотр задачи</h1>
+        </header>
+        <div class="task__group">
+            <p class="task__data task__data--enlarged" th:text="${task.name}"></p>
+            <p class="task__data" th:text="${task.description}"></p>
+            <p class="task__data">Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
+                <input type="checkbox" th:unless="${task.urgency}" disabled></p>
+        </div>
+        <div class="task__group">
+            <a class="task__submit" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
+            <a class="task__submit" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
+            <br>
+            <br>
+            <a class="task__submit" href="/">Все задачи</a>
+        </div>
+    </form>
 </body>
 </html>

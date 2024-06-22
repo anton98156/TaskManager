@@ -1,5 +1,19 @@
-.task-add {
+.task {
     @extend %main-form;
+
+    &--opened {
+        background: white;
+    }
+
+    &__data {
+        margin-bottom: 15px;
+
+        &--enlarged {
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bolder;
+        }
+    }
 
     &__group {
         margin-bottom: 15px;
@@ -40,6 +54,7 @@
         border-radius: 5px;
         color: #fff;
         font-size: 14px;
+        text-decoration: none;
         cursor: pointer;
         
         &:hover {

@@ -19,7 +19,7 @@ body {
   transform: scale(1.2);
 }
 
-.task-add, .menu {
+.task, .menu {
   width: 100%;
   max-width: 720px;
   background: #d0d0d0;
@@ -86,32 +86,43 @@ body {
   padding-left: 10px;
 }
 
-.task-add__group {
+.task--opened {
+  background: white;
+}
+.task__data {
   margin-bottom: 15px;
 }
-.task-add__label {
+.task__data--enlarged {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bolder;
+}
+.task__group {
+  margin-bottom: 15px;
+}
+.task__label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 14px;
 }
-.task-add__input {
+.task__input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
 }
-.task-add__input:focus {
+.task__input:focus {
   border-color: #4A90E2;
   outline: none;
   box-shadow: 0 0 4px #4A90E2;
 }
-.task-add__checkbox {
+.task__checkbox {
   width: auto;
   cursor: pointer;
 }
-.task-add__submit {
+.task__submit {
   display: inline-block;
   width: auto;
   padding: 10px 20px;
@@ -120,11 +131,12 @@ body {
   border-radius: 5px;
   color: #fff;
   font-size: 14px;
+  text-decoration: none;
   cursor: pointer;
 }
-.task-add__submit:hover {
+.task__submit:hover {
   background-color: #666;
 }
-.task-add__submit:active {
+.task__submit:active {
   background-color: #333;
 }/*# sourceMappingURL=main.css.map */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,27 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <form class="task-add" action="#" th:action="@{/task-update}" th:object="${task}" method="post">
+    <form class="task" action="#" th:action="@{/task-update}" th:object="${task}" method="post">
         <input type="hidden" th:field="*{id}" id="id">
         <header class="header">
             <img class="header__icon" src="/images/taskList.png">
             <h1 class="header--centered">Обновление задачи</h1>
         </header>
-        <div class="task-add__group">
-            <label class="task-add__label" for="name"><h3>Название:</h3></label>
-            <input class="task-add__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
+        <div class="task__group">
+            <label class="task__label" for="name"><h3>Название:</h3></label>
+            <input class="task__input" type="text" th:field="*{name}" id="name" placeholder="введите название">
         </div>
-        <div class="task-add__group">
-            <label class="task-add__label" for="description"><h3>Описание:</h3></label>
-            <input class="task-add__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <div class="task__group">
+            <label class="task__label" for="description"><h3>Описание:</h3></label>
+            <input class="task__input" type="text" th:field="*{description}" id="description" placeholder="введите описание">
         </div>
-        <div class="task-add__group">
+        <div class="task__group">
             <label for="urgency">Срочность: 
-                <input class="task-add__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
+                <input class="task__checkbox" type="checkbox" th:field="*{urgency}" id="urgency">
             </label>
         </div>
-        <div class="task-add__group">
-            <input class="task-add__submit" type="submit" value="Обновить">
+        <div class="task__group">
+            <input class="task__submit" type="submit" value="Обновить">
         </div>
     </form>
     <script th:src="@{/js/validation.js}"></script>
