@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.taskmanager.pro.service.TaskService;
 import com.taskmanager.pro.entity.Task;
 import org.springframework.ui.Model;
@@ -49,7 +50,9 @@ public class TaskController {
 
     // Переход на форму обновления задачи.
     @GetMapping("/task-update/{id}")
-    public String updateTaskForm(Task task) {
+    public String updateTaskForm(@PathVariable int id, Model model) {
+        Task tasks = taskService.findById(id);
+        model.addAttribute("task", tasks);
         return "task-update";
     }
 

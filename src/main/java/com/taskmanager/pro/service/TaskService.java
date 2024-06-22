@@ -17,8 +17,8 @@ public class TaskService {
 
     // Реализация методов репозитория.
 
-    public Task saveTask(Task product){
-        return taskRepository.save(product);
+    public Task saveTask(Task task){
+        return taskRepository.save(task);
     }
 
     public List<Task> findAll(){
@@ -29,8 +29,8 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public void updateById(Task product, int id) {
-        taskRepository.updateById(product, id);
+    public void updateById(Task task, int id) {
+        taskRepository.updateById(task, id);
     }
 
     public void deleteById(int id) {
