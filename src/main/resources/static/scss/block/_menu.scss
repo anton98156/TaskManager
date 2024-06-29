@@ -44,6 +44,7 @@
     }
 
     &--text-padding-left {
+        word-wrap: break-word;
         padding-left: 10px
     }
 }

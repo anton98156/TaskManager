@@ -83,6 +83,7 @@ body {
   margin-left: 55px;
 }
 .menu--text-padding-left {
+  word-wrap: break-word;
   padding-left: 10px;
 }
 
@@ -90,6 +91,7 @@ body {
   background: white;
 }
 .task__data {
+  word-wrap: break-word;
   margin-bottom: 15px;
 }
 .task__data--enlarged {

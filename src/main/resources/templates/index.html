@@ -17,7 +17,7 @@
         </header>
         <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
             <p>
-                <span th:text="${task.name}" class="menu--text-padding-left"></span>
+                <span class="menu--text-padding-left" th:text="${task.name}"></span>
             </p>
             <a class="button menu__button" th:href="@{/task-update/{id}(id=${task.id})}" id="button-update">
                 <img class="menu__img-custom menu__img-custom--left" src="/images/pencil.png" alt="Обновить">
