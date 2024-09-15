@@ -1,7 +1,9 @@
 package com.taskmanager.pro.repository;
 
-import com.taskmanager.pro.entity.Task;
 import org.springframework.stereotype.Repository;
+
+import com.taskmanager.pro.model.Task;
+
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;

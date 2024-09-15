@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.service.TaskService;
-import com.taskmanager.pro.entity.Task;
+
 import org.springframework.ui.Model;
 import java.util.List;
 

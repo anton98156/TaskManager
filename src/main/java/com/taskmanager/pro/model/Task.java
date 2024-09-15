@@ -1,4 +1,4 @@
-package com.taskmanager.pro.entity;
+package com.taskmanager.pro.model;
 
 public class Task {
     

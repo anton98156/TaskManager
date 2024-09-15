@@ -1,7 +1,8 @@
 package com.taskmanager.pro.service;
 
 import org.springframework.stereotype.Service;
-import com.taskmanager.pro.entity.Task;
+
+import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.repository.TaskRepository;
 import java.util.List;
 
