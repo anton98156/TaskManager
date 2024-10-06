@@ -20,7 +20,7 @@ public class TaskRepository {
     // Сохранение новой задачи.
     public Task save(Task task) {
         String sql = "INSERT INTO tasks (name, description, urgency) VALUES (?, ?, ?)";
-        jdbc.update(sql, task.getName(), task.getDescription(), task.getUrgency());
+        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency());
         return task;
     }
 
@@ -57,7 +57,7 @@ public class TaskRepository {
     // Обновление задачи.
     public Task updateById(Task task, int id) {
         String sql = "UPDATE tasks SET name = ?, description = ?, urgency = ? WHERE id = ?";
-        jdbc.update(sql, task.getName(), task.getDescription(), task.getUrgency(), id);
+        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), id);
         return task;
     }
 
