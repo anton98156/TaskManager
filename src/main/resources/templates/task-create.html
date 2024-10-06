@@ -26,6 +26,11 @@
             </label>
         </div>
         <div class="task__group">
+            <label for="importance">Важность: 
+                <input class="task__checkbox" type="checkbox" th:field="*{importance}" id="importance">
+            </label>
+        </div>
+        <div class="task__group">
             <input class="task__submit" type="submit" value="Добавить">
         </div>
     </form>

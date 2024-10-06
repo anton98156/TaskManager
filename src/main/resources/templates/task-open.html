@@ -18,6 +18,8 @@
             <p class="task__data" th:text="${task.description}"></p>
             <p class="task__data">Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.urgency}" disabled></p>
+            <p class="task__data">Важность: <input type="checkbox" th:if="${task.importance}" checked="checked" disabled>        
+                <input type="checkbox" th:unless="${task.importance}" disabled></p>
         </div>
         <div class="task__group">
             <a class="task__submit" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>

@@ -10,5 +10,11 @@ public class Task {
     private String name;
     private String description;
     private boolean urgency;
+    private boolean importance;
+
+    // Кастомизация метода для корректности наименования.
+    public boolean getImportance() {
+        return importance;
+    }
 
 }
