@@ -13,6 +13,7 @@ public class TaskRepository {
     
     // Взаимодействие с БД.
     private final JdbcTemplate jdbc;
+    
     public TaskRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
@@ -27,30 +28,12 @@ public class TaskRepository {
     // Вывод всех задач.
     public List<Task> findAll() {
         String sql = "SELECT * FROM tasks";
-        RowMapper<Task> taskRowMapper = (r, i) -> {
-            Task rowObject = new Task();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setName(r.getString("name"));
-            rowObject.setDescription(r.getString("description"));
-            rowObject.setUrgency(r.getBoolean("urgency"));
-            return rowObject;
-        };
-
         return jdbc.query(sql, taskRowMapper);
     }
 
     // Поиск задачи по ID.
     public Task findById(int id) {
         String sql = "SELECT * FROM tasks WHERE id = ?";
-        RowMapper<Task> taskRowMapper = (r, i) -> {
-            Task rowObject = new Task();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setName(r.getString("name"));
-            rowObject.setDescription(r.getString("description"));
-            rowObject.setUrgency(r.getBoolean("urgency"));
-            return rowObject;
-        };
-
         return jdbc.queryForObject(sql, taskRowMapper, id);
     }
 
@@ -67,4 +50,12 @@ public class TaskRepository {
         jdbc.update(sql, id);
     }
     
+    private RowMapper<Task> taskRowMapper = (r, i) ->  {
+        Task rowObject = new Task();
+        rowObject.setId(r.getInt("id"));
+        rowObject.setName(r.getString("name"));
+        rowObject.setDescription(r.getString("description"));
+        rowObject.setUrgency(r.getBoolean("urgency"));
+        return rowObject;
+    };
 }
