@@ -41,9 +41,8 @@ body {
   margin-right: 10px;
 }
 .header--centered {
-  flex-grow: 1;
   display: flex;
-  align-items: center;
+  flex-grow: 1;
   margin-right: 10px;
   font-size: 31px;
 }
