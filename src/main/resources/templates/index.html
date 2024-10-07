@@ -19,6 +19,9 @@
             <p>
                 <span class="menu--text-padding-left" th:text="${task.name}"></span>
             </p>
+            <a class="button menu__button" th:href="@{/task-complete/{id}(id=${task.id})}" id="button-complete">
+                <img class="menu__img-custom menu__img-custom--left-edge" src="/images/complete.png" alt="Выполнить">
+            </a>
             <a class="button menu__button" th:href="@{/task-update/{id}(id=${task.id})}" id="button-update">
                 <img class="menu__img-custom menu__img-custom--left" src="/images/pencil.png" alt="Обновить">
             </a>
