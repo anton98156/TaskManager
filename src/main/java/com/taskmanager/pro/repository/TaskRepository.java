@@ -1,12 +1,11 @@
 package com.taskmanager.pro.repository;
 
 import org.springframework.stereotype.Repository;
-
-import com.taskmanager.pro.model.Task;
-
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
+
+import com.taskmanager.pro.model.Task;
 
 @Repository
 public class TaskRepository {
@@ -37,6 +36,12 @@ public class TaskRepository {
         return jdbc.queryForObject(sql, taskRowMapper, id);
     }
 
+    // Выполнение задачи.
+    public void completeById(int id) {
+        String sql = "UPDATE tasks SET status = 'COMPLETED' WHERE id = ?";
+        jdbc.update(sql, id);
+    }
+
     // Обновление задачи.
     public Task updateById(Task task, int id) {
         String sql = "UPDATE tasks SET name = ?, description = ?, urgency = ?, importance = ? WHERE id = ?";
@@ -46,7 +51,7 @@ public class TaskRepository {
 
     // Удаление задачи.
     public void deleteById(int id) {
-        String sql = "DELETE FROM tasks WHERE id=?";
+        String sql = "DELETE FROM tasks WHERE id = ?";
         jdbc.update(sql, id);
     }
     

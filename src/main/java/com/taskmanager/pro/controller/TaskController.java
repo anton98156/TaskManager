@@ -4,12 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import java.util.List;
 
 import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.service.TaskService;
-
-import org.springframework.ui.Model;
-import java.util.List;
 
 @Controller
 public class TaskController {
@@ -31,8 +30,8 @@ public class TaskController {
     // Просмотр задачи.
     @GetMapping("/task-open/{id}")
     public String findById(@PathVariable int id, Model model) {
-        Task tasks = taskService.findById(id);
-        model.addAttribute("task", tasks);
+        Task task = taskService.findById(id);
+        model.addAttribute("task", task);
         return "task-open";
     }
 
@@ -52,11 +51,17 @@ public class TaskController {
     // Переход на форму обновления задачи.
     @GetMapping("/task-update/{id}")
     public String updateTaskForm(@PathVariable int id, Model model) {
-        Task tasks = taskService.findById(id);
-        model.addAttribute("task", tasks);
+        Task task = taskService.findById(id);
+        model.addAttribute("task", task);
         return "task-update";
     }
 
+    @GetMapping("/task-complete/{id}")
+    public String completeTask(@PathVariable int id) {
+        taskService.completeById(id);
+        return "redirect:/";
+    }
+    
     // Обновление задачи.
     @PostMapping("/task-update")
     public String updateTask(Task task, int id) {

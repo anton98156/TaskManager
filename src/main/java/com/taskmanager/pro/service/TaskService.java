@@ -1,10 +1,10 @@
 package com.taskmanager.pro.service;
 
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.repository.TaskRepository;
-import java.util.List;
 
 @Service
 
@@ -28,6 +28,10 @@ public class TaskService {
 
     public Task findById(int id) {
         return taskRepository.findById(id);
+    }
+
+    public void completeById(int id) {
+        taskRepository.completeById(id);
     }
 
     public void updateById(Task task, int id) {
