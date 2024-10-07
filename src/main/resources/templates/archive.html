@@ -9,9 +9,9 @@
 <body>
     <div class="menu">
         <header class="header">
-            <h1 class="header--centered">Архив</h1>
-            <a class="button" href="/task-create">
-                <img class="header__icon" src="/images/plus.png" alt="Добавить">
+            <h1 class="header--centered" style="justify-content: center">Архив</h1>
+            <a class="button" href="/">
+                <img class="header__icon" src="/images/return.png" alt="Обратно">
             </a>
         </header>
         <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
@@ -29,7 +29,7 @@
             </a>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
-            <p class="menu__usser-message">В архиве сейчас пусто!</p>
+            <p style="font-size: 20px">В архиве сейчас пусто!</p>
         </div>
     </div>
     <script th:src="@{/js/index.js}"></script>
