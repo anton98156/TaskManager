@@ -22,8 +22,12 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public List<Task> findAll(){
-        return taskRepository.findAll();
+    public List<Task> findAllActiveTasks(){
+        return taskRepository.findAllActiveTasks();
+    }
+
+    public List<Task> findAllCompletedTasks(){
+        return taskRepository.findAllCompletedTasks();
     }
 
     public Task findById(int id) {

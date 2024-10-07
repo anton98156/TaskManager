@@ -10,6 +10,7 @@ import java.util.List;
 import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.service.TaskService;
 
+
 @Controller
 public class TaskController {
     
@@ -22,9 +23,17 @@ public class TaskController {
     // Вывод всех задач.
     @GetMapping("/")
     public String findAll(Model model){
-        List<Task> tasks = taskService.findAll();
+        List<Task> tasks = taskService.findAllActiveTasks();
         model.addAttribute("tasks", tasks);
         return "index";
+    }
+
+    // Переход в архив.
+    @GetMapping("/archive")
+    public String openArchive(Model model) {
+        List<Task> tasks = taskService.findAllCompletedTasks();
+        model.addAttribute("tasks", tasks);
+        return "archive";
     }
 
     // Просмотр задачи.
@@ -34,6 +43,7 @@ public class TaskController {
         model.addAttribute("task", task);
         return "task-open";
     }
+    
 
     // Переход на форму добавления задачи.
     @GetMapping("/task-create")

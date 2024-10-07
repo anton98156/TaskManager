@@ -24,9 +24,15 @@ public class TaskRepository {
         return task;
     }
 
-    // Вывод всех задач.
-    public List<Task> findAll() {
-        String sql = "SELECT * FROM tasks";
+    // Вывод всех активных задач.
+    public List<Task> findAllActiveTasks() {
+        String sql = "SELECT * FROM tasks WHERE status = 'ACTIVE'";
+        return jdbc.query(sql, taskRowMapper);
+    }
+
+    // Вывод всех архивных задач.
+    public List<Task> findAllCompletedTasks() {
+        String sql = "SELECT * FROM tasks WHERE status = 'COMPLETED'";
         return jdbc.query(sql, taskRowMapper);
     }
 
