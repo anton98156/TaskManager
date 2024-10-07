@@ -48,18 +48,19 @@ public class TaskController {
         return "redirect:/";
     }
 
+    // Завершение задачи.
+    @GetMapping("/task-complete/{id}")
+    public String completeTask(@PathVariable int id) {
+        taskService.completeById(id);
+        return "redirect:/";
+    }
+
     // Переход на форму обновления задачи.
     @GetMapping("/task-update/{id}")
     public String updateTaskForm(@PathVariable int id, Model model) {
         Task task = taskService.findById(id);
         model.addAttribute("task", task);
         return "task-update";
-    }
-
-    @GetMapping("/task-complete/{id}")
-    public String completeTask(@PathVariable int id) {
-        taskService.completeById(id);
-        return "redirect:/";
     }
     
     // Обновление задачи.
