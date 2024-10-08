@@ -46,6 +46,9 @@ body {
   margin-right: 10px;
   font-size: 31px;
 }
+.header--centered {
+  justify-content: center;
+}
 
 .menu__task {
   cursor: pointer;
