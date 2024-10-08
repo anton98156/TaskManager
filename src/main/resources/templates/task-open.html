@@ -10,11 +10,12 @@
     <form class="task task--opened">
         <input type="hidden" th:field="*{id}" id="id">
         <header class="header">
-            <img class="header__icon" src="/images/taskList.png">
-            <h1 class="header--leftward">Просмотр задачи</h1>
+            <h1 class="header__task-name header--centered" th:text="${task.name}"></h1>
+            <a class="button" style="position: absolute; left: 0;" th:href="${task.status.equals('ACTIVE')} ? '/' : '/archive'">
+                <img class="header__icon" src="/images/return.png" alt="Обратно">
+            </a>
         </header>
         <div class="task__group">
-            <p class="task__data task__data--enlarged" th:text="${task.name}"></p>
             <p class="task__data" th:text="${task.description}"></p>
             <p class="task__data">Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.urgency}" disabled></p>
@@ -22,7 +23,7 @@
                 <input type="checkbox" th:unless="${task.importance}" disabled></p>
         </div>
         <div class="task__group">
-            <a class="task__submit" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
+            <a class="task__submit" style="margin-top: 30px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
             <a class="task__submit" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
             <br>
             <br>

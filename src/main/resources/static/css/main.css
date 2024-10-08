@@ -40,6 +40,12 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
+.header__task-name {
+  display: flex;
+  flex-grow: 1;
+  font-size: 23px;
+  margin-bottom: 40px;
+}
 .header--leftward {
   display: flex;
   flex-grow: 1;
