@@ -95,10 +95,10 @@ public class TaskController {
     }
 
     private String findEndpoint(String status) {
-        if (status.equals("COMPLETED")) {
-            return "redirect:/archive";
-        } else {
+        if (status.equals("ACTIVE")) {
             return "redirect:/";
+        } else {
+            return "redirect:/archive";
         }
     }
 
