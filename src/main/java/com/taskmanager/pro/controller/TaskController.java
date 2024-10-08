@@ -76,15 +76,30 @@ public class TaskController {
     // Обновление задачи.
     @PostMapping("/task-update")
     public String updateTask(Task task, int id) {
+        String status = checkStatus(id);
         taskService.updateById(task, id);
-        return "redirect:/";
+        return findEndpoint(status);
     }
 
     // Удаление задачи.
     @GetMapping("/task-delete/{id}")
     public String deleteTask(@PathVariable int id) {
+        String status = checkStatus(id);
         taskService.deleteById(id);
-        return "redirect:/";
+        return findEndpoint(status);
+    }
+
+    private String checkStatus(int id) {
+        Task.Status status = taskService.findById(id).getStatus();
+        return status.toString();
+    }
+
+    private String findEndpoint(String status) {
+        if (status.equals("COMPLETED")) {
+            return "redirect:/archive";
+        } else {
+            return "redirect:/";
+        }
     }
 
 }
