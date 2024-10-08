@@ -58,10 +58,10 @@ public class TaskController {
         return "redirect:/";
     }
 
-    // Завершение задачи.
-    @GetMapping("/task-complete/{id}")
-    public String completeTask(@PathVariable int id) {
-        taskService.completeById(id);
+    // Перемещение задачи.
+    @GetMapping("/task-move/{id}")
+    public String moveTask(@PathVariable int id) {
+        taskService.moveById(id);
         return "redirect:/";
     }
 

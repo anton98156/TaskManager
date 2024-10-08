@@ -34,8 +34,8 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public void completeById(int id) {
-        taskRepository.completeById(id);
+    public void moveById(int id) {
+        taskRepository.moveById(id);
     }
 
     public void updateById(Task task, int id) {

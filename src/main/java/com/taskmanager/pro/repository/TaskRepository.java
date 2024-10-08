@@ -42,9 +42,18 @@ public class TaskRepository {
         return jdbc.queryForObject(sql, taskRowMapper, id);
     }
 
-    // Выполнение задачи.
-    public void completeById(int id) {
-        String sql = "UPDATE tasks SET status = 'COMPLETED' WHERE id = ?";
+    // Перемещение задачи.
+    public void moveById(int id) {
+        String newStatus = new String();
+
+        if (findById(id).getStatus().equals(Task.Status.ACTIVE)) {
+            newStatus = "COMPLETED";
+        } else if (findById(id).getStatus().equals(Task.Status.COMPLETED)) {
+            newStatus = "ACTIVE";
+        }
+
+        String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
+        System.out.println(sql);
         jdbc.update(sql, id);
     }
 

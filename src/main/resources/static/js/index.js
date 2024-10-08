@@ -16,20 +16,20 @@ function addTaskButtonBehavior() {
     var taskBodies = document.querySelectorAll('.menu__task');
 
     taskBodies.forEach(function(taskBody) {
-        taskBody.querySelector('#button-complete').style.display = 'none';
+        taskBody.querySelector('#button-move').style.display = 'none';
         taskBody.querySelector('#button-update').style.display = 'none';
         taskBody.querySelector('#button-delete').style.display = 'none';
     });
 
     taskBodies.forEach(function(taskBody) {
         taskBody.addEventListener('mouseover', function() {
-            this.querySelector('#button-complete').style.display = 'inline-block';
+            this.querySelector('#button-move').style.display = 'inline-block';
             this.querySelector('#button-update').style.display = 'inline-block';
             this.querySelector('#button-delete').style.display = 'inline-block';
         });
 
         taskBody.addEventListener('mouseout', function() {
-            this.querySelector('#button-complete').style.display = 'none';
+            this.querySelector('#button-move').style.display = 'none';
             this.querySelector('#button-update').style.display = 'none';
             this.querySelector('#button-delete').style.display = 'none';
         });
