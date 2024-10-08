@@ -20,6 +20,13 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    // Создание задачи.
+    @PostMapping("/task-create")
+    public String createTask(Task task) {
+        taskService.saveTask(task);
+        return "redirect:/";
+    }
+
     // Вывод всех задач.
     @GetMapping("/")
     public String findAll(Model model){
@@ -51,18 +58,12 @@ public class TaskController {
         return "task-create";
     }
 
-    // Создание задачи.
-    @PostMapping("/task-create")
-    public String createTask(Task task) {
-        taskService.saveTask(task);
-        return "redirect:/";
-    }
-
     // Перемещение задачи.
     @GetMapping("/task-move/{id}")
     public String moveTask(@PathVariable int id) {
+        Task.Status status = checkStatus(id);
         taskService.moveById(id);
-        return "redirect:/";
+        return findEndpoint(status);
     }
 
     // Переход на форму обновления задачи.
@@ -76,7 +77,7 @@ public class TaskController {
     // Обновление задачи.
     @PostMapping("/task-update")
     public String updateTask(Task task, int id) {
-        String status = checkStatus(id);
+        Task.Status status = checkStatus(id);
         taskService.updateById(task, id);
         return findEndpoint(status);
     }
@@ -84,18 +85,18 @@ public class TaskController {
     // Удаление задачи.
     @GetMapping("/task-delete/{id}")
     public String deleteTask(@PathVariable int id) {
-        String status = checkStatus(id);
+        Task.Status status = checkStatus(id);
         taskService.deleteById(id);
         return findEndpoint(status);
     }
 
-    private String checkStatus(int id) {
+    private Task.Status checkStatus(int id) {
         Task.Status status = taskService.findById(id).getStatus();
-        return status.toString();
+        return status;
     }
 
-    private String findEndpoint(String status) {
-        if (status.equals("ACTIVE")) {
+    private String findEndpoint(Task.Status status) {
+        if (status.equals(Task.Status.ACTIVE)) {
             return "redirect:/";
         } else {
             return "redirect:/archive";

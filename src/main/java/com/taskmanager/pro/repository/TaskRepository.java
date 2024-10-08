@@ -53,7 +53,6 @@ public class TaskRepository {
         }
 
         String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
-        System.out.println(sql);
         jdbc.update(sql, id);
     }
 
