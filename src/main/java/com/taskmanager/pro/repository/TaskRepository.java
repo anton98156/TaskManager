@@ -19,8 +19,8 @@ public class TaskRepository {
 
     // Сохранение новой задачи.
     public Task save(Task task) {
-        String sql = "INSERT INTO tasks (name, description, urgency, importance) VALUES (?, ?, ?, ?)";
-        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), task.getImportance());
+        String sql = "INSERT INTO tasks (name, description, urgency, importance, status) VALUES (?, ?, ?, ?, ?)";
+        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), task.getImportance(), Task.Status.ACTIVE.name());
         return task;
     }
 
@@ -68,6 +68,7 @@ public class TaskRepository {
         rowObject.setDescription(r.getString("description"));
         rowObject.setUrgency(r.getBoolean("urgency"));
         rowObject.setImportance(r.getBoolean("importance"));
+        rowObject.setStatus(Task.Status.valueOf(r.getString("status"))); 
         return rowObject;
     };
 }
