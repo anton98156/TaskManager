@@ -3,6 +3,8 @@ package com.taskmanager.pro.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.taskmanager.pro.model.Task;
@@ -19,8 +21,9 @@ public class TaskRepository {
 
     // Сохранение новой задачи.
     public Task save(Task task) {
-        String sql = "INSERT INTO tasks (name, description, urgency, importance, status) VALUES (?, ?, ?, ?, ?)";
-        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), task.getImportance(), Task.Status.ACTIVE.name());
+        String sql = "INSERT INTO tasks (name, description, urgency, importance, status, createdDateTime) VALUES (?, ?, ?, ?, ?, ?)";
+        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), task.getImportance(),
+                            Task.Status.ACTIVE.name(), LocalDateTime.now());
         return task;
     }
 

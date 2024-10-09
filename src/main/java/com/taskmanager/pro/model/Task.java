@@ -1,5 +1,7 @@
 package com.taskmanager.pro.model;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
@@ -11,6 +13,10 @@ public class Task {
     private String description;
     private boolean urgency;
     private boolean importance;
+    private LocalDateTime createdDateTime;
+    private LocalDateTime modifiedDateTime;
+    private LocalDateTime plannedEndDateTime;
+    private LocalDateTime actualEndDateTime;
 
     // Статусы задачи.
     public enum Status {
