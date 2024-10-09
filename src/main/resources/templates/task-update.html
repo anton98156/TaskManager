@@ -31,6 +31,7 @@
                 <input class="task__checkbox" type="checkbox" th:field="*{importance}" id="importance">
             </label>
         </div>
+        <p class="task__data" th:text="${task.status.name() == 'ACTIVE' ? 'Статус: активно' : 'Статус: архив'}"></p>
         <div class="task__group">
             <input class="task__submit" type="submit" value="Обновить">
         </div>
