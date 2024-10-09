@@ -11,7 +11,8 @@
         <input type="hidden" th:field="*{id}" id="id">
         <header class="header">
             <h1 class="header__task-name header--centered" th:text="${task.name}"></h1>
-            <a class="button header__task-name" style="position: absolute; left: 0;" th:href="${task.status.name().equals('ACTIVE')} ? '/' : '/archive'">
+            <a class="button header__task-name" style="position: absolute; left: 0;"
+                th:href="${task.status.name().equals('ACTIVE')} ? '/' : '/archive'">
                 <img class="header__icon" src="/images/return.png" alt="Обратно">
             </a>
         </header>
@@ -27,7 +28,8 @@
             <a class="task__submit" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
             <br>
             <br>
-            <a class="task__submit" href="/">Все задачи</a>
+            <a class="task__submit" th:href="@{/task-move/{id}(id=${task.id})}" 
+                th:text="${task.status.name() == 'ACTIVE' ? 'Завершить' : 'Вернуть'}"></a>
         </div>
     </form>
 </body>
