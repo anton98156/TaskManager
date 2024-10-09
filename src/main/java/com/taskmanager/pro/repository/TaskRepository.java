@@ -21,9 +21,11 @@ public class TaskRepository {
 
     // Сохранение новой задачи.
     public Task save(Task task) {
-        String sql = "INSERT INTO tasks " +
-                    "(name, description, urgency, importance, planned_end_date_time, status, created_date_time, modified_date_time) " + 
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = new StringBuilder()
+        .append("INSERT INTO tasks ")
+        .append("(name, description, urgency, importance, planned_end_date_time, status, created_date_time, modified_date_time) ")
+        .append("VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+        .toString();
         
         jdbc.update(sql, task.getName(), 
                             task.getDescription(), 
