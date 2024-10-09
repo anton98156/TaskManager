@@ -44,14 +44,19 @@ public class TaskRepository {
 
     // Перемещение задачи.
     public void moveById(int id) {
+        Task.Status status = findById(id).getStatus();
         String newStatus = new String();
-
-        if (findById(id).getStatus().equals(Task.Status.ACTIVE)) {
-            newStatus = "COMPLETED";
-        } else if (findById(id).getStatus().equals(Task.Status.COMPLETED)) {
-            newStatus = "ACTIVE";
+        try {
+            if (status.equals(Task.Status.ACTIVE)) {
+                newStatus = "COMPLETED";
+            } else if (status.equals(Task.Status.COMPLETED)) {
+                newStatus = "ACTIVE";
+            } else {
+                throw new IllegalArgumentException("Некорректный статус задачи: " + status);
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-
         String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
         jdbc.update(sql, id);
     }

@@ -96,10 +96,17 @@ public class TaskController {
     }
 
     private String findEndpoint(Task.Status status) {
-        if (status.equals(Task.Status.ACTIVE)) {
+        try {
+            if (status.equals(Task.Status.ACTIVE)) {
+                return "redirect:/";
+            } else if (status.equals(Task.Status.COMPLETED)) {
+                return "redirect:/archive";
+            } else {
+                throw new IllegalArgumentException("Некорректный статус задачи: " + status);
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return "redirect:/";
-        } else {
-            return "redirect:/archive";
         }
     }
 
