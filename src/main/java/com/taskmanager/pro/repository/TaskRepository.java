@@ -22,16 +22,18 @@ public class TaskRepository {
     // Сохранение новой задачи.
     public Task save(Task task) {
         String sql = "INSERT INTO tasks " +
-                    "(name, description, urgency, importance, status, created_date_time, modified_date_time) " + 
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "(name, description, urgency, importance, planned_end_date_time, status, created_date_time, modified_date_time) " + 
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         jdbc.update(sql, task.getName(), 
                             task.getDescription(), 
                             task.isUrgency(), 
                             task.getImportance(),
+                            task.getPlannedEndDateTime(),
                             Task.Status.ACTIVE.name(), 
                             LocalDateTime.now(), 
                             LocalDateTime.now());
+        
         return task;
     }
 
@@ -93,7 +95,6 @@ public class TaskRepository {
         rowObject.setUrgency(r.getBoolean("urgency"));
         rowObject.setImportance(r.getBoolean("importance"));
         rowObject.setStatus(Task.Status.valueOf(r.getString("status")));
-        // rowObject.setCreatedDateTime(r.getString(r.getCreatedDateTime().toString()));
         return rowObject;
     };
 }
