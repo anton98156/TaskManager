@@ -23,6 +23,20 @@
             <p class="task__data">Важность: <input type="checkbox" th:if="${task.importance}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.importance}" disabled></p>
             <p class="task__data" th:text="${task.status.name() == 'ACTIVE' ? 'Статус: активно' : 'Статус: архив'}"></p>
+            <p>
+                Дата создания: 
+                <span class="task__data" th:text="${task.createdDateTime != null ?
+                                                    #temporals.format(task.createdDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                                    : 'Не указано'}"></span>
+            </p>
+            <p>
+                Дата изменения: 
+                <span class="task__data" th:text="${task.modifiedDateTime != null ?
+                                                    #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                                    : 'Не указано'}"></span>
+            </p>
+            <!-- Планируемое завершение:
+                Фактическое завершение: -->
         </div>
         <div class="task__group">
             <a class="task__submit" style="margin-top: 30px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>

@@ -3,7 +3,6 @@ package com.taskmanager.pro.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -60,7 +59,8 @@ public class TaskRepository {
     // Перемещение задачи.
     public void moveById(int id) {
         Task.Status status = findById(id).getStatus();
-        String newStatus = new String();
+        String newStatus;
+
         try {
             if (status.equals(Task.Status.ACTIVE)) {
                 newStatus = "COMPLETED";
@@ -69,11 +69,14 @@ public class TaskRepository {
             } else {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }
+
+            String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
+            jdbc.update(sql, id);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
-        jdbc.update(sql, id);
+        
     }
 
     // Обновление задачи.
@@ -91,12 +94,24 @@ public class TaskRepository {
     
     private RowMapper<Task> taskRowMapper = (r, i) ->  {
         Task rowObject = new Task();
+
+        try {
         rowObject.setId(r.getInt("id"));
         rowObject.setName(r.getString("name"));
         rowObject.setDescription(r.getString("description"));
         rowObject.setUrgency(r.getBoolean("urgency"));
         rowObject.setImportance(r.getBoolean("importance"));
         rowObject.setStatus(Task.Status.valueOf(r.getString("status")));
+        rowObject.setCreatedDateTime(r.getTimestamp("created_date_time").toLocalDateTime());
+        rowObject.setModifiedDateTime(r.getTimestamp("modified_date_time").toLocalDateTime());
+        // rowObject.setPlannedEndDateTime(r.getTimestamp("planned_end_date_time").toLocalDateTime());
+        // rowObject.setActualEndDateTime(r.getTimestamp("actual_end_date_time").toLocalDateTime());
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
         return rowObject;
     };
 }
