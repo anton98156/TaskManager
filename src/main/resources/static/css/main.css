@@ -111,6 +111,9 @@ body {
   font-size: 22px;
   font-weight: bolder;
 }
+.task__data--indented {
+  margin-top: 10px;
+}
 .task__group {
   margin-bottom: 15px;
 }

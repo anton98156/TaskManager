@@ -23,25 +23,26 @@
             <p class="task__data">Важность: <input type="checkbox" th:if="${task.importance}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.importance}" disabled></p>
             <p class="task__data" th:text="${task.status.name() == 'ACTIVE' ? 'Статус: активно' : 'Статус: архив'}"></p>
-            <p>
+            <br>
+            <br>
+            <p class="task__data--indented">
                 Дата создания: 
-                <span class="task__data" th:text="${task.createdDateTime != null ?
-                                                    #temporals.format(task.createdDateTime, 'yyyy-MM-dd HH:mm:ss')
-                                                    : 'Не указано'}"></span>
+                <span th:text="${task.createdDateTime != null ?
+                                #temporals.format(task.createdDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                : 'Не указано'}"></span>
             </p>
-            <p>
+            <p class="task__data--indented">
                 Дата изменения: 
-                <span class="task__data" th:text="${task.modifiedDateTime != null ?
-                                                    #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
-                                                    : 'Не указано'}"></span>
+                <span th:text="${task.modifiedDateTime != null ?
+                                #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                : 'Не указано'}"></span>
             </p>
             <!-- Планируемое завершение:
                 Фактическое завершение: -->
         </div>
         <div class="task__group">
             <a class="task__submit" style="margin-top: 30px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
-            <a class="task__submit" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
-            <br>
+            <a class="task__submit" style="margin-bottom: 15px;" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
             <br>
             <a class="task__submit" th:href="@{/task-move/{id}(id=${task.id})}" 
                 th:text="${task.status.name() == 'ACTIVE' ? 'Завершить' : 'Вернуть'}"></a>
