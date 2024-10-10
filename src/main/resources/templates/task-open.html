@@ -17,7 +17,7 @@
             </a>
         </header>
         <div class="task__group">
-            <p class="task__data" th:text="${task.description}"></p>
+            <p class="task__data--highlighted" th:text="${task.description}"></p>
             <br>
             <p class="task__data">Срочность: <input type="checkbox" th:if="${task.urgency}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.urgency}" disabled></p>

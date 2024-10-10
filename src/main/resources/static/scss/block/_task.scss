@@ -1,73 +1,82 @@
 .task {
-    @extend %main-form;
+@extend %main-form;
+
+    border: 17px solid #343639;
 
     &--opened {
-        background: white;
+        background: linear-gradient(135deg, #ffffff, #f7f9fc);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     &__data {
         word-wrap: break-word;
         margin-bottom: 15px;
 
-        &--enlarged {
-            margin-top: 30px;
-            font-size: 22px;
-            font-weight: bolder;
-        }
-
         &--indented {
             margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid #343639;
         }
+
+        &--highlighted {
+            background-color: #dadada;
+            padding: 7px;
+        }
+
     }
 
     &__group {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
-    
+
     &__label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
         font-size: 14px;
+        color: #373a3d;
     }
-    
-    &__input{
+
+    &__input {
         width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
+        padding: 10px;
+        border: 2px solid #ccc;
         border-radius: 4px;
         font-size: 14px;
-        
+        transition: border 0.3s, box-shadow 0.3s, background-color 5000s;
+        background-color: white;
+
         &:focus {
-            border-color: #4A90E2;
+            border-color: #463b3b;
             outline: none;
-            box-shadow: 0 0 4px #4A90E2;
+            box-shadow: 0 0 6px #4a4742;
         }
     }
 
     &__checkbox {
         width: auto;
         cursor: pointer;
+        margin-right: 5px;
     }
 
     &__submit {
         display: inline-block;
-        width: auto;
-        padding: 10px 20px;
-        background-color: #000;
+        padding: 12px 24px;
+        background-color: #151516;
         border: none;
         border-radius: 5px;
         color: #fff;
         font-size: 14px;
-        text-decoration: none;
         cursor: pointer;
-        
+        margin: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+        text-decoration: none; 
+
         &:hover {
-            background-color: #666;
-        }
-        
-        &:active {
-            background-color: #333;
+            background-color: #000000;
+            transform: translateY(-5px);
         }
     }
 }
