@@ -70,8 +70,8 @@ public class TaskRepository {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }
 
-            String sql = "UPDATE tasks SET status = '" + newStatus + "' WHERE id = ?";
-            jdbc.update(sql, id);
+            String sql = "UPDATE tasks SET status = '" + newStatus + "', modified_date_time = ? WHERE id = ?";
+            jdbc.update(sql, LocalDateTime.now(), id);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
