@@ -81,8 +81,14 @@ public class TaskRepository {
 
     // Обновление задачи.
     public Task updateById(Task task, int id) {
-        String sql = "UPDATE tasks SET name = ?, description = ?, urgency = ?, importance = ? WHERE id = ?";
-        jdbc.update(sql, task.getName(), task.getDescription(), task.isUrgency(), task.getImportance(), id);
+        String sql = "UPDATE tasks SET name = ?, description = ?, urgency = ?, importance = ?, modified_date_time = ? WHERE id = ?";
+
+        jdbc.update(sql, task.getName(),
+                            task.getDescription(),
+                            task.isUrgency(),
+                            task.getImportance(),
+                            LocalDateTime.now(), id);
+
         return task;
     }
 
