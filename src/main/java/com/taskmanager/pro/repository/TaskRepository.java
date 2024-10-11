@@ -59,19 +59,17 @@ public class TaskRepository {
     // Перемещение задачи.
     public void moveById(int id) {
         Task.Status status = findById(id).getStatus();
-        String newStatus;
+        String sql = "UPDATE tasks SET status = ?, modified_date_time = ? WHERE id = ?";
 
         try {
             if (status.equals(Task.Status.ACTIVE)) {
-                newStatus = "COMPLETED";
+                jdbc.update(sql, "COMPLETED", LocalDateTime.now(), id);
             } else if (status.equals(Task.Status.COMPLETED)) {
-                newStatus = "ACTIVE";
+                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), id);
             } else {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }
-
-            String sql = "UPDATE tasks SET status = '" + newStatus + "', modified_date_time = ? WHERE id = ?";
-            jdbc.update(sql, LocalDateTime.now(), id);
+            
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
