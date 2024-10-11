@@ -61,17 +61,16 @@ public class TaskRepository {
     // Перемещение задачи.
     public void moveById(int id) {
         Task.Status status = findById(id).getStatus();
-        String sql = "UPDATE tasks SET status = ?, modified_date_time = ? WHERE id = ?";
+        String sql = "UPDATE tasks SET status = ?, modified_date_time = ?, actual_end_date_time = ? WHERE id = ?";
 
         try {
             if (status.equals(Task.Status.ACTIVE)) {
-                jdbc.update(sql, "COMPLETED", LocalDateTime.now(), id);
+                jdbc.update(sql, "COMPLETED", LocalDateTime.now(), LocalDateTime.now(), id);
             } else if (status.equals(Task.Status.COMPLETED)) {
-                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), id);
+                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, id);
             } else {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }
-            
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -100,6 +99,7 @@ public class TaskRepository {
     
     private RowMapper<Task> taskRowMapper = (r, i) ->  {
         Task rowObject = new Task();
+        Timestamp plannedEndTimestamp = r.getTimestamp("planned_end_date_time");
         Timestamp actualEndTimestamp = r.getTimestamp("actual_end_date_time");
 
         try {
@@ -111,8 +111,7 @@ public class TaskRepository {
         rowObject.setStatus(Task.Status.valueOf(r.getString("status")));
         rowObject.setCreatedDateTime(r.getTimestamp("created_date_time").toLocalDateTime());
         rowObject.setModifiedDateTime(r.getTimestamp("modified_date_time").toLocalDateTime());
-        // rowObject.setPlannedEndDateTime(r.getTimestamp("planned_end_date_time").toLocalDateTime());
-        // rowObject.setActualEndDateTime(r.getTimestamp("actual_end_date_time").toLocalDateTime());
+        rowObject.setPlannedEndDateTime(plannedEndTimestamp != null ? plannedEndTimestamp.toLocalDateTime() : null);
         rowObject.setActualEndDateTime(actualEndTimestamp != null ? actualEndTimestamp.toLocalDateTime() : null);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
