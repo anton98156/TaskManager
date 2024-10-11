@@ -36,8 +36,12 @@
                                 #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
                                 : 'Не указано'}"></span>
             </p>
-            <!-- Планируемое завершение:
-                Фактическое завершение: -->
+            <p class="task__data--indented">
+                <span th:if="${task.actualEndDateTime != null}">
+                    Фактическое завершение: 
+                    <span th:text="${#temporals.format(task.actualEndDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </span>
+            </p>                     
         </div>
         <div class="task__group">
             <a class="task__submit" style="margin-top: 20px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
