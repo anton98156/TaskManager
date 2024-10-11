@@ -25,6 +25,12 @@
             padding: 7px;
         }
 
+        &--bolder-red-text {
+            font-weight: bolder;
+            text-decoration: underline;
+            color: red;
+        }
+
     }
 
     &__group {

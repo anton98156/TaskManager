@@ -121,6 +121,11 @@ body {
   background-color: #dadada;
   padding: 7px;
 }
+.task__data--bolder-red-text {
+  font-weight: bolder;
+  text-decoration: underline;
+  color: red;
+}
 .task__group {
   margin-bottom: 20px;
 }

@@ -36,7 +36,7 @@
                                 #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
                                 : 'Не указано'}"></span>
             </p>
-            <p class="task__data--indented">
+            <p class="task__data--indented task__data--bolder-red-text">
                 <span th:if="${task.actualEndDateTime != null}">
                     Фактическое завершение: 
                     <span th:text="${#temporals.format(task.actualEndDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
