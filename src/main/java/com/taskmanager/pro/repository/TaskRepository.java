@@ -3,6 +3,8 @@ package com.taskmanager.pro.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -98,6 +100,7 @@ public class TaskRepository {
     
     private RowMapper<Task> taskRowMapper = (r, i) ->  {
         Task rowObject = new Task();
+        Timestamp actualEndTimestamp = r.getTimestamp("actual_end_date_time");
 
         try {
         rowObject.setId(r.getInt("id"));
@@ -110,6 +113,7 @@ public class TaskRepository {
         rowObject.setModifiedDateTime(r.getTimestamp("modified_date_time").toLocalDateTime());
         // rowObject.setPlannedEndDateTime(r.getTimestamp("planned_end_date_time").toLocalDateTime());
         // rowObject.setActualEndDateTime(r.getTimestamp("actual_end_date_time").toLocalDateTime());
+        rowObject.setActualEndDateTime(actualEndTimestamp != null ? actualEndTimestamp.toLocalDateTime() : null);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
