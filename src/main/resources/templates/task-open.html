@@ -27,19 +27,25 @@
             <p class="task__data--indented">
                 Дата создания: 
                 <span th:text="${task.createdDateTime != null ?
-                                #temporals.format(task.createdDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                #temporals.format(task.createdDateTime, 'yyyy-MM-dd HH:mm')
                                 : 'Не указано'}"></span>
             </p>
             <p class="task__data--indented">
                 Дата изменения: 
                 <span th:text="${task.modifiedDateTime != null ?
-                                #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm:ss')
+                                #temporals.format(task.modifiedDateTime, 'yyyy-MM-dd HH:mm')
+                                : 'Не указано'}"></span>
+            </p>
+            <p class="task__data--indented">
+                Планируемое завершение: 
+                <span th:text="${task.plannedEndDateTime != null ?
+                                #temporals.format(task.plannedEndDateTime, 'yyyy-MM-dd HH:mm')
                                 : 'Не указано'}"></span>
             </p>
             <p class="task__data--indented task__data--bolder-red-text">
                 <span th:if="${task.actualEndDateTime != null}">
-                    Фактическое завершение: 
-                    <span th:text="${#temporals.format(task.actualEndDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                Фактическое завершение: 
+                    <span th:text="${#temporals.format(task.actualEndDateTime, 'yyyy-MM-dd HH:mm')}"></span>
                 </span>
             </p>                     
         </div>

@@ -31,6 +31,10 @@
             </label>
         </div>
         <div class="task__group">
+            <label class="task__label" for="plannedEndDateTime"><h3>Срок выполнения: </h3></label>
+            <input class="task__input" type="datetime-local" th:field="*{plannedEndDateTime}" id="plannedEndDateTime">
+        </div>
+        <div class="task__group">
             <input class="task__submit" type="submit" value="Добавить">
         </div>
     </form>
