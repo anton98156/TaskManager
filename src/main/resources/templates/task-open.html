@@ -24,7 +24,6 @@
             <p class="task__data">Важность: <input type="checkbox" th:if="${task.importance}" checked="checked" disabled>        
                 <input type="checkbox" th:unless="${task.importance}" disabled></p>
             <p class="task__data" th:text="${task.status.name() == 'ACTIVE' ? 'Статус: активно' : 'Статус: архив'}"></p>
-            <br>
             <p class="task__data--indented">
                 Дата создания: 
                 <span th:text="${task.createdDateTime != null ?
@@ -41,7 +40,7 @@
                 Фактическое завершение: -->
         </div>
         <div class="task__group">
-            <a class="task__submit" style="margin-top: 30px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
+            <a class="task__submit" style="margin-top: 20px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
             <a class="task__submit" style="margin-bottom: 15px;" th:href="@{/task-delete/{id}(id=${task.id})}">Удалить</a>
             <br>
             <a class="task__submit" th:href="@{/task-move/{id}(id=${task.id})}" 
