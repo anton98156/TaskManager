@@ -2,6 +2,7 @@ package com.taskmanager.pro.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
@@ -76,7 +77,7 @@ public class TaskController {
     
     // Обновление задачи.
     @PostMapping("/task-update")
-    public String updateTask(Task task, int id) {
+    public String updateTask(@ModelAttribute Task task, int id) {
         Task.Status status = checkStatus(id);
         taskService.updateById(task, id);
         return findEndpoint(status);

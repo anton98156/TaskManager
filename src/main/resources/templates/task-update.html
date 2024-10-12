@@ -33,8 +33,12 @@
         </div>
         <p class="task__data" th:text="${task.status.name() == 'ACTIVE' ? 'Статус: активно' : 'Статус: архив'}"></p>
         <div class="task__group">
-            <label class="task__label" for="plannedEndDateTime"><h3>Срок выполнения: </h3></label>
-            <input class="task__input" type="datetime-local" th:field="*{plannedEndDateTime}" id="plannedEndDateTime">
+            <label class="task__label" for="plannedEndDateTime"><h3>Срок выполнения:</h3></label>
+            <input class="task__input" type="datetime-local" th:field="*{plannedEndDateTime}" id="plannedEndDateTime"/>
+            <input type="datetime-local" 
+                    th:value="${#temporals.format(task.plannedEndDateTime, 'yyyy-MM-dd HH:mm')}"
+                    id="plannedEndDateTimeDisplay"
+                    readonly/>
         </div>
         <div class="task__group">
             <input class="task__submit" type="submit" value="Обновить">
