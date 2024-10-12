@@ -43,6 +43,8 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+}
+.header--bottom-indented {
   margin-bottom: 20px;
 }
 .header__icon {
@@ -127,9 +129,9 @@ body {
   padding: 7px;
 }
 .task__data--bolder-red-text {
-  font-weight: bolder;
+  font-weight: 950;
   text-decoration: underline;
-  color: red;
+  color: black;
 }
 .task__group {
   margin-bottom: 20px;

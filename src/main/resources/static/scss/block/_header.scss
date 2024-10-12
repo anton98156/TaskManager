@@ -2,7 +2,10 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+
+    &--bottom-indented {
+        margin-bottom: 20px;
+    }
 
     &__icon {
         width: 35px;
