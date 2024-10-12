@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.taskmanager.pro.model.Task;
@@ -28,15 +30,22 @@ public class TaskController {
         return "redirect:/";
     }
 
-    // Вывод всех задач.
+    // Вывод всех активных задач.
     @GetMapping("/")
     public String findAll(Model model){
         List<Task> tasks = taskService.findAllActiveTasks();
+
+        for (Task task : tasks) {
+            if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+                task.setOverdue(true);
+            }
+        }
+
         model.addAttribute("tasks", tasks);
         return "index";
     }
 
-    // Переход в архив.
+    // Переход всех архивных задач.
     @GetMapping("/archive")
     public String openArchive(Model model) {
         List<Task> tasks = taskService.findAllCompletedTasks();

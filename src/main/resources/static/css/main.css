@@ -28,6 +28,17 @@ body {
   border-radius: 40px;
 }
 
+.menu__task {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 0px;
+  border-top: 4px solid black;
+  background-color: white;
+  margin: 7px 0px;
+  border-radius: 9px;
+  transition: transform 0.3s;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -56,15 +67,9 @@ body {
   justify-content: center;
 }
 
-.menu__task {
-  cursor: pointer;
-  position: relative;
-  padding: 10px 0px;
-  border-top: 4px solid black;
-  background-color: white;
-  margin: 7px 0px;
-  border-radius: 9px;
-  transition: transform 0.3s;
+.menu__task--overdue {
+  color: red;
+  font-weight: bolder;
 }
 .menu__task:hover {
   transform: scale(1.05);

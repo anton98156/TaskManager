@@ -2,14 +2,12 @@
     @extend %main-form;
 
     &__task {
-        cursor: pointer;
-        position: relative;
-        padding: 10px 0px;
-        border-top: 4px solid black;
-        background-color: white;
-        margin: 7px 0px;
-        border-radius: 9px;
-        transition: transform 0.3s;
+        @extend %menu-task;
+
+        &--overdue {
+            color: red;
+            font-weight: bolder;
+        }
     }
 
     &__task:hover {

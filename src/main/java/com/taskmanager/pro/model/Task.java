@@ -13,6 +13,7 @@ public class Task {
     private String description;
     private boolean urgency;
     private boolean importance;
+    private boolean overdue;
     private LocalDateTime createdDateTime;
     private LocalDateTime modifiedDateTime;
     private LocalDateTime plannedEndDateTime;

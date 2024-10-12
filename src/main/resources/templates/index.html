@@ -19,7 +19,7 @@
             </a>
         </header>
         <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
-            <p>
+            <p th:class="${task.overdue} ? 'menu__task--overdue' : ''">
                 <span class="menu--text-padding-left" th:text="${task.name}"></span>
             </p>
             <a class="button menu__button" th:href="@{/task-move/{id}(id=${task.id})}" id="button-move">

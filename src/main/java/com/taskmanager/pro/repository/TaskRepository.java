@@ -113,6 +113,7 @@ public class TaskRepository {
         rowObject.setDescription(r.getString("description"));
         rowObject.setUrgency(r.getBoolean("urgency"));
         rowObject.setImportance(r.getBoolean("importance"));
+        rowObject.setImportance(r.getBoolean("overdue"));
         rowObject.setStatus(Task.Status.valueOf(r.getString("status")));
         rowObject.setCreatedDateTime(r.getTimestamp("created_date_time").toLocalDateTime());
         rowObject.setModifiedDateTime(r.getTimestamp("modified_date_time").toLocalDateTime());
