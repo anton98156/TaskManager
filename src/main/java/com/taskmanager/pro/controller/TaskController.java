@@ -34,13 +34,7 @@ public class TaskController {
     @GetMapping("/")
     public String findAll(Model model){
         List<Task> tasks = taskService.findAllActiveTasks();
-
-        for (Task task : tasks) {
-            if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
-                task.setOverdue(true);
-            }
-        }
-
+        updateTasksOverdue(tasks);
         model.addAttribute("tasks", tasks);
         return "index";
     }
@@ -117,6 +111,15 @@ public class TaskController {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return "redirect:/";
+        }
+    }
+
+    private void updateTasksOverdue(List<Task> tasks) {
+        for (Task task : tasks) {
+            if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+                task.setOverdue(true);
+                taskService.updateOverdueById(task, task.getId());
+            }
         }
     }
 

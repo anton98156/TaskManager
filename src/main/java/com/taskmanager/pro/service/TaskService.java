@@ -42,6 +42,10 @@ public class TaskService {
         taskRepository.updateById(task, id);
     }
 
+    public void updateOverdueById(Task task, int id) {
+        taskRepository.updateOverdueById(task, id);
+    }
+
     public void deleteById(int id) {
         taskRepository.deleteById(id);
     }
