@@ -128,7 +128,7 @@ body {
   background-color: #dadada;
   padding: 7px;
 }
-.task__data--bolder-red-text {
+.task__data--bolder-text {
   text-decoration: underline;
   font-weight: bolder;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
