@@ -94,11 +94,13 @@ public class TaskController {
         return findEndpoint(status);
     }
 
+    // Установка статуса.
     private Task.Status checkStatus(int id) {
         Task.Status status = taskService.findById(id).getStatus();
         return status;
     }
 
+    // Поиск актуального "endpoint".
     private String findEndpoint(Task.Status status) {
         try {
             if (status.equals(Task.Status.ACTIVE)) {
@@ -114,6 +116,7 @@ public class TaskController {
         }
     }
 
+    // Выделение задач с превышением срока исполнения как "просроченных".
     private void updateTasksOverdue(List<Task> tasks) {
         for (Task task : tasks) {
             if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {

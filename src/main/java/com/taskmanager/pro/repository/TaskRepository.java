@@ -101,6 +101,7 @@ public class TaskRepository {
         return task;
     }
 
+    // Выделение задачи как "просроченной".
     public Task updateOverdueById(Task task, int id) {
         String sql = "UPDATE tasks SET overdue = 1 WHERE id = ?";
         jdbc.update(sql, id);
