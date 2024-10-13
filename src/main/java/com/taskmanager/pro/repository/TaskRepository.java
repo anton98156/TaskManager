@@ -60,19 +60,21 @@ public class TaskRepository {
 
     // Перемещение задачи.
     public void moveById(int id) {
-        Task.Status status = findById(id).getStatus();
-        StringBuilder temp = new StringBuilder()
-        .append("UPDATE tasks SET status = ?, modified_date_time = ?, actual_end_date_time = ?");
-        String sql;
+        Task task = findById(id);
+        Task.Status status = task.getStatus();
+        String sql = "UPDATE tasks SET status = ?, modified_date_time = ?, actual_end_date_time = ?, overdue = ? WHERE id = ?";
+        boolean overdue;
 
         try {
             if (status.equals(Task.Status.ACTIVE)) {
-                sql = temp.append(", overdue = ? ")
-                            .append("WHERE id = ?").toString();
-                            jdbc.update(sql, "COMPLETED", LocalDateTime.now(), LocalDateTime.now(), "0", id);
+                jdbc.update(sql, "COMPLETED", LocalDateTime.now(), LocalDateTime.now(), "0", id);
             } else if (status.equals(Task.Status.COMPLETED)) {
-                sql = temp.append(" WHERE id = ?").toString();
-                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, id);
+                if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+                    overdue = true;
+                } else {
+                    overdue = false;
+                }
+                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, overdue, id);
             } else {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }

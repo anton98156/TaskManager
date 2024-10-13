@@ -46,12 +46,28 @@
                                 #temporals.format(task.plannedEndDateTime, 'yyyy-MM-dd HH:mm')
                                 : 'Не указано'}"></span>
             </p>
+
+            <!-- <p class="task__data--indented task__data--bolder-text">
+                <span th:if="${task.overdue == true}">
+                Превышен срок исполнения!
+                    <span th:text="Превышен срок исполнения!"></span>
+                </span>
+            </p>    -->
+<!--             
+            <p th:text="${task.overdue}"></p>
+            <p class="task__data--indented task__data--bolder-text">
+                <span th:if="${task.overdue}">
+                    Превышен срок исполнения!
+                </span>
+            </p> -->
+
+
             <p class="task__data--indented task__data--bolder-text">
                 <span th:if="${task.actualEndDateTime != null}">
                 Фактическое завершение: 
                     <span th:text="${#temporals.format(task.actualEndDateTime, 'yyyy-MM-dd HH:mm')}"></span>
                 </span>
-            </p>                     
+            </p>                  
         </div>
         <div class="task__group">
             <a class="task__submit" style="margin-top: 20px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
