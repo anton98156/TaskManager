@@ -10,7 +10,9 @@
     <form class="task" action="#" th:action="@{/task-update}" th:object="${task}" method="post">
         <input type="hidden" th:field="*{id}" id="id">
         <header class="header header--bottom-indented">
-            <img class="header__icon" src="/favicon.ico">
+            <a class="button" href="/">
+                <img class="header__icon" src="/favicon.ico" alt="Менеджер задач">
+            </a>
             <h1 class="header--leftward">Обновление задачи</h1>
         </header>
         <div class="task__group">
