@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.taskmanager.pro.model.Task;
+import com.taskmanager.pro.repository.TaskRepository;
 import com.taskmanager.pro.service.TaskService;
 
 
@@ -119,7 +118,7 @@ public class TaskController {
     // Выделение задач с превышением срока исполнения как "просроченных".
     private void updateTasksOverdue(List<Task> tasks) {
         for (Task task : tasks) {
-            if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+            if (TaskRepository.checkOverdue(task)) {
                 task.setOverdue(true);
                 taskService.updateOverdueById(task, task.getId());
             }

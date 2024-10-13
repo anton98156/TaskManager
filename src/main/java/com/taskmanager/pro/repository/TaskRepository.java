@@ -63,18 +63,12 @@ public class TaskRepository {
         Task task = findById(id);
         Task.Status status = task.getStatus();
         String sql = "UPDATE tasks SET status = ?, modified_date_time = ?, actual_end_date_time = ?, overdue = ? WHERE id = ?";
-        boolean overdue;
 
         try {
             if (status.equals(Task.Status.ACTIVE)) {
                 jdbc.update(sql, "COMPLETED", LocalDateTime.now(), LocalDateTime.now(), "0", id);
             } else if (status.equals(Task.Status.COMPLETED)) {
-                if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
-                    overdue = true;
-                } else {
-                    overdue = false;
-                }
-                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, overdue, id);
+                jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, checkOverdue(task), id);
             } else {
                 throw new IllegalArgumentException("Некорректный статус задачи: " + status);
             }
@@ -82,20 +76,21 @@ public class TaskRepository {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        
     }
 
     // Обновление задачи.
     public Task updateById(Task task, int id) {
+        boolean overdue = checkOverdue(task);
         String sql = new StringBuilder()
         .append("UPDATE tasks ")
-        .append("SET name = ?, description = ?, urgency = ?, importance = ?, planned_end_date_time = ?, modified_date_time = ? ")
+        .append("SET name = ?, description = ?, urgency = ?, importance = ?, overdue = ?, planned_end_date_time = ?, modified_date_time = ? ")
         .append("WHERE id = ?")
         .toString();
 
         jdbc.update(sql, task.getName(),
                             task.getDescription(),
                             task.isUrgency(),
+                            overdue,
                             task.getImportance(),
                             task.getPlannedEndDateTime(),
                             LocalDateTime.now(), id);
@@ -114,6 +109,15 @@ public class TaskRepository {
     public void deleteById(int id) {
         String sql = "DELETE FROM tasks WHERE id = ?";
         jdbc.update(sql, id);
+    }
+
+    // Проверка срока исполнения задачи.
+    public static boolean checkOverdue(Task task) {
+        if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     private RowMapper<Task> taskRowMapper = (r, i) ->  {
