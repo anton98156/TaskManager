@@ -37,7 +37,25 @@ public class TaskController {
         model.addAttribute("tasks", tasks);
         return "index";
     }
+    
+    // Вывод только важных активных задач.
+    @GetMapping("/important-tasks")
+    public String findAllActiveImportantTasks(Model model){
+        List<Task> tasks = taskService.findAllActiveImportantTasks();
+        updateTasksOverdue(tasks);
+        model.addAttribute("tasks", tasks);
+        return "index";
+    }
 
+    // Вывод только срочных активных задач.
+    @GetMapping("/urgent-tasks")
+    public String findAllActiveUrgentTasks(Model model){
+        List<Task> tasks = taskService.findAllActiveUrgentTasks();
+        updateTasksOverdue(tasks);
+        model.addAttribute("tasks", tasks);
+        return "index";
+    }
+    
     // Переход всех архивных задач.
     @GetMapping("/archive")
     public String openArchive(Model model) {

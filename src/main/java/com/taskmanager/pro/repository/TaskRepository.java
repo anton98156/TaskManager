@@ -46,6 +46,18 @@ public class TaskRepository {
         return jdbc.query(sql, taskRowMapper);
     }
 
+    // Вывод только важных активных задач.
+    public List<Task> findAllActiveImportantTasks() {
+        String sql = "SELECT * FROM tasks WHERE status = 'ACTIVE' AND importance = TRUE";
+        return jdbc.query(sql, taskRowMapper);
+    }
+
+    // Вывод только срочных активных задач.
+    public List<Task> findAllActiveUrgentTasks() {
+        String sql = "SELECT * FROM tasks WHERE status = 'ACTIVE' AND urgency = TRUE";
+        return jdbc.query(sql, taskRowMapper);
+    }
+
     // Вывод всех архивных задач.
     public List<Task> findAllCompletedTasks() {
         String sql = "SELECT * FROM tasks WHERE status = 'COMPLETED'";

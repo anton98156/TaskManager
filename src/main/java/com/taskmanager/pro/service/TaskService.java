@@ -26,6 +26,14 @@ public class TaskService {
         return taskRepository.findAllActiveTasks();
     }
 
+    public List<Task> findAllActiveImportantTasks(){
+        return taskRepository.findAllActiveImportantTasks();
+    }
+
+    public List<Task> findAllActiveUrgentTasks(){
+        return taskRepository.findAllActiveUrgentTasks();
+    }
+
     public List<Task> findAllCompletedTasks(){
         return taskRepository.findAllCompletedTasks();
     }

@@ -13,6 +13,12 @@
                 <img class="header__icon" src="/favicon.ico" alt="Менеджер задач">
             </a>
             <h1 class="header--leftward">Менеджер задач</h1>
+            <a class="button" href="/important-tasks">
+                <img class="header__icon" src="/images/importance.png" alt="Добавить">
+            </a>
+            <a class="button" href="/urgent-tasks">
+                <img class="header__icon" src="/images/urgency.png" alt="Добавить">
+            </a>
             <a class="button" href="/archive">
                 <img class="header__icon" src="/images/archive.png" alt="Добавить">
             </a>
@@ -35,7 +41,7 @@
             </a>
         </div>
         <div th:if="${#lists.isEmpty(tasks)}">
-            <p class="menu__usser-message">Здесь будут ваши задачи!</p>
+            <p class="menu__usser-message">Сейчас нет задач!</p>
         </div>
     </div>
     <script th:src="@{/js/index.js}"></script>
