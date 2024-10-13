@@ -23,15 +23,21 @@ public class TaskService {
     }
 
     public List<Task> findAllActiveTasks(){
-        return taskRepository.findAllActiveTasks();
+        List<Task> tasks = taskRepository.findAllActiveTasks();
+        updateTasksOverdue(tasks);
+        return tasks;
     }
 
     public List<Task> findAllActiveImportantTasks(){
-        return taskRepository.findAllActiveImportantTasks();
+        List<Task> tasks = taskRepository.findAllActiveImportantTasks();
+        updateTasksOverdue(tasks);
+        return tasks;
     }
 
     public List<Task> findAllActiveUrgentTasks(){
-        return taskRepository.findAllActiveUrgentTasks();
+        List<Task> tasks = taskRepository.findAllActiveUrgentTasks();
+        updateTasksOverdue(tasks);
+        return tasks;
     }
 
     public List<Task> findAllCompletedTasks(){
@@ -56,6 +62,16 @@ public class TaskService {
 
     public void deleteById(int id) {
         taskRepository.deleteById(id);
+    }
+
+    // Выделение задач с превышением срока исполнения как "просроченных".
+    private void updateTasksOverdue(List<Task> tasks) {
+        for (Task task : tasks) {
+            if (TaskRepository.checkOverdue(task)) {
+                task.setOverdue(true);
+                updateOverdueById(task, task.getId());
+            }
+        }
     }
 
 }

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import java.util.List;
 
 import com.taskmanager.pro.model.Task;
-import com.taskmanager.pro.repository.TaskRepository;
 import com.taskmanager.pro.service.TaskService;
 
 
@@ -33,7 +32,6 @@ public class TaskController {
     @GetMapping("/")
     public String findAll(Model model){
         List<Task> tasks = taskService.findAllActiveTasks();
-        updateTasksOverdue(tasks);
         model.addAttribute("tasks", tasks);
         return "index";
     }
@@ -42,7 +40,6 @@ public class TaskController {
     @GetMapping("/important-tasks")
     public String findAllActiveImportantTasks(Model model){
         List<Task> tasks = taskService.findAllActiveImportantTasks();
-        updateTasksOverdue(tasks);
         model.addAttribute("tasks", tasks);
         return "index";
     }
@@ -51,7 +48,6 @@ public class TaskController {
     @GetMapping("/urgent-tasks")
     public String findAllActiveUrgentTasks(Model model){
         List<Task> tasks = taskService.findAllActiveUrgentTasks();
-        updateTasksOverdue(tasks);
         model.addAttribute("tasks", tasks);
         return "index";
     }
@@ -130,16 +126,6 @@ public class TaskController {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return "redirect:/";
-        }
-    }
-
-    // Выделение задач с превышением срока исполнения как "просроченных".
-    private void updateTasksOverdue(List<Task> tasks) {
-        for (Task task : tasks) {
-            if (TaskRepository.checkOverdue(task)) {
-                task.setOverdue(true);
-                taskService.updateOverdueById(task, task.getId());
-            }
         }
     }
 
