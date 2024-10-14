@@ -40,7 +40,7 @@
                     th:field="*{plannedEndDateTime}" id="plannedEndDateTime" style="margin-bottom: 10px;"/>
             <span th:text="${#temporals.format(task.plannedEndDateTime, 'yyyy-MM-dd HH:mm')}"></span>
         </div>
-        <div class="task__group">
+        <div class="task__group" style="margin-bottom: 0; padding-bottom: 0;">
             <input class="task__submit" type="submit" value="Обновить">
         </div>
     </form>
