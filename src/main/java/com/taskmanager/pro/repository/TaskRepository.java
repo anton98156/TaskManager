@@ -124,7 +124,7 @@ public class TaskRepository {
     }
 
     // Проверка срока исполнения задачи.
-    public static boolean checkOverdue(Task task) {
+    public boolean checkOverdue(Task task) {
         if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
             return true;
         } else {
