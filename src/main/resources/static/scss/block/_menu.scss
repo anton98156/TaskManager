@@ -1,16 +1,16 @@
 .menu {
     @extend %main-form;
 
-    &__task {
-        @extend %menu-task;
+    &__record {
+        @extend %menu-record;
 
-        &--overdue {
-            color: red;
-            font-weight: bolder;
+        &--bold {
+            font-weight: bold !important;
+            color: brown;
         }
     }
 
-    &__task:hover {
+    &__record:hover {
         transform: scale(1.05);
     }
 

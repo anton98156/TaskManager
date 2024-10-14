@@ -29,8 +29,8 @@
                 <img class="header__icon" src="/images/plus.png" alt="Добавить">
             </a>
         </header>
-        <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
-            <p th:class="${task.overdue} ? 'menu__task--overdue' : ''">
+        <div class="menu__record" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
+            <p th:class="${task.overdue} ? 'menu__record--bold' : ''">
                 <span class="menu--text-padding-left" th:text="${task.name}"></span>
             </p>
             <a class="button menu__button" th:href="@{/task-move/{id}(id=${task.id})}" id="button-move">

@@ -19,8 +19,8 @@ public class NotificationRepository {
     }
     
     public Notification save(Notification notification) {
-        String sql = "INSERT INTO notifications (message, created_date_time, status) VALUES (?, ?, ?)";
-        jdbc.update(sql, notification.getMessage(), LocalDateTime.now(), Notification.Status.UNREAD.name());
+        String sql = "INSERT INTO notifications (message, created_date_time, read) VALUES (?, ?, ?)";
+        jdbc.update(sql, notification.getMessage(), LocalDateTime.now(), notification.isRead());
         return notification;
     }
 
@@ -37,7 +37,7 @@ public class NotificationRepository {
         rowObject.setId(r.getInt("id"));
         rowObject.setMessage(r.getString("message"));
         rowObject.setCreatedDateTime(r.getTimestamp("created_date_time").toLocalDateTime());
-        rowObject.setStatus(Notification.Status.valueOf(r.getString("status")));
+        rowObject.setRead(r.getBoolean("read"));
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {

@@ -14,7 +14,7 @@
                 <img class="header__icon" src="/images/return.png" alt="Обратно">
             </a>
         </header>
-        <div class="menu__task" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
+        <div class="menu__record" th:each="task : ${tasks}" th:attr="data-id=${task.id}">
             <p>
                 <span class="menu--text-padding-left" th:text="${task.name}"></span>
             </p>

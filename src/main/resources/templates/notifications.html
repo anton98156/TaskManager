@@ -14,8 +14,8 @@
                 <img class="header__icon" src="/images/return.png" alt="Обратно">
             </a>
         </header>
-        <div class="menu__task" th:each="notification : ${notifications}" th:attr="data-id=${notification.id}">
-            <p>
+        <div class="menu__record" th:each="notification : ${notifications}" th:attr="data-id=${notification.id}">
+            <p th:class="${notification.read} ? '' : 'menu__record--bold'">
                 <span class="menu--text-padding-left" th:text="${notification.message}"></span>
             </p>
         </div>

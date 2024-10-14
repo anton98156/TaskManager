@@ -30,7 +30,7 @@ body {
   border-radius: 40px;
 }
 
-.menu__task {
+.menu__record {
   cursor: pointer;
   position: relative;
   padding: 10px 0px;
@@ -71,11 +71,11 @@ body {
   justify-content: center;
 }
 
-.menu__task--overdue {
-  color: red;
-  font-weight: bolder;
+.menu__record--bold {
+  font-weight: bold !important;
+  color: brown;
 }
-.menu__task:hover {
+.menu__record:hover {
   transform: scale(1.05);
 }
 .menu__button {

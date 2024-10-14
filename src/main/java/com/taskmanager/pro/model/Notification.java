@@ -9,6 +9,7 @@ public class Notification {
     private int id;
     private String message;
     private LocalDateTime createdDateTime;
+    private boolean read;
     
     // Конструкторы.
     public Notification() {
@@ -17,11 +18,4 @@ public class Notification {
         this.message = message;
     }
 
-    // Статусы уведомления.
-    public enum Status {
-        READ,
-        UNREAD
-    }
-
-    private Status status = Status.UNREAD; // Значение по умолчанию.
 }
