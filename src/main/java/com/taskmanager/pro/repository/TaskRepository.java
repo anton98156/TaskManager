@@ -3,11 +3,11 @@ package com.taskmanager.pro.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.taskmanager.pro.exception.IncorrectStatusException;
 import com.taskmanager.pro.model.Task;
 
 @Repository
@@ -82,10 +82,10 @@ public class TaskRepository {
             } else if (status.equals(Task.Status.COMPLETED)) {
                 jdbc.update(sql, "ACTIVE", LocalDateTime.now(), null, checkOverdue(task), id);
             } else {
-                throw new IllegalArgumentException("Некорректный статус задачи: " + status);
+                throw new IncorrectStatusException("Некорректный статус задачи: " + status);
             }
 
-        } catch (IllegalArgumentException e) {
+        } catch (IncorrectStatusException e) {
             System.out.println(e.getMessage());
         }
     }
