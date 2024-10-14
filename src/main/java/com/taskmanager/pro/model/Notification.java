@@ -9,7 +9,10 @@ public class Notification {
     private int id;
     private String message;
     private LocalDateTime createdDateTime;
-
+    
+    // Конструкторы.
+    public Notification() {
+    }
     public Notification(String message) {
         this.message = message;
     }

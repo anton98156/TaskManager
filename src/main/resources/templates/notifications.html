@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уведомления</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="menu">
+        <header class="header header--bottom-indented">
+            <h1 class="header--leftward header--centered">Уведомления</h1>
+            <a class="button" style="position: absolute; left: 0;" href="/">
+                <img class="header__icon" src="/images/return.png" alt="Обратно">
+            </a>
+        </header>
+        <div class="menu__task" th:each="notification : ${notifications}" th:attr="data-id=${notification.id}">
+            <p>
+                <span class="menu--text-padding-left" th:text="${notification.message}"></span>
+            </p>
+        </div>
+        <br>
+        <div th:if="${#lists.isEmpty(notifications)}">
+            <p style="text-align: center; font-size: 20px;">Уведомлений сейчас нет!</p>
+        </div>
+    </div>
+    <script th:src="@{/js/index.js}"></script>
+</body>
+</html>
