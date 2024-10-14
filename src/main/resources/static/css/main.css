@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
   margin: 0;
@@ -11,9 +12,18 @@ body {
   height: 100vh;
   background: linear-gradient(160deg, rgb(195, 195, 195), rgba(40, 40, 40, 0.93));
 }
+body__icon {
+  width: 24px; /* Ширина иконки */
+  height: 24px; /* Высота иконки */
+  position: absolute; /* Позволяет позиционировать элемент */
+  top: 10px; /* Отступ сверху */
+  right: 10px; /* Отступ справа */
+  z-index: 10; /* Чтобы иконка была выше других элементов */
+}
 
 .button {
   transition: transform 0.3s;
+  position: relative;
 }
 .button :hover {
   transform: scale(1.2);
