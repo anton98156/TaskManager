@@ -18,7 +18,7 @@ public class NotificationRepository {
     
     public Notification save(Notification notification) {
         String sql = "INSERT INTO notifications (message, created_date_time, status) VALUES (?, ?, ?)";
-        jdbc.update(sql, notification.getMessage(), LocalDateTime.now(), Notification.Status.UNREAD);
+        jdbc.update(sql, notification.getMessage(), LocalDateTime.now(), Notification.Status.UNREAD.name());
         return notification;
     }
 
