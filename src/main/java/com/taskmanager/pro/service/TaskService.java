@@ -52,12 +52,12 @@ public class TaskService {
         taskRepository.moveById(id);
     }
 
-    public void updateById(Task task, int id) {
-        taskRepository.updateById(task, id);
+    public void updateById(Task task) {
+        taskRepository.updateById(task);
     }
 
-    public void updateOverdueById(Task task, int id) {
-        taskRepository.updateOverdueById(task, id);
+    public void updateOverdueById(Task task) {
+        taskRepository.updateOverdueById(task);
     }
 
     public void deleteById(int id) {
@@ -69,7 +69,7 @@ public class TaskService {
         for (Task task : tasks) {
             if (taskRepository.checkOverdue(task)) {
                 task.setOverdue(true);
-                updateOverdueById(task, task.getId());
+                updateOverdueById(task);
             }
         }
     }

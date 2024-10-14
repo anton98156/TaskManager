@@ -93,9 +93,9 @@ public class TaskController {
     
     // Обновление задачи.
     @PostMapping("/task-update")
-    public String updateTask(@ModelAttribute Task task, int id) {
-        Task.Status status = checkStatus(id);
-        taskService.updateById(task, id);
+    public String updateTask(@ModelAttribute Task task) {
+        Task.Status status = checkStatus(task.getId());
+        taskService.updateById(task);
         return findEndpoint(status);
     }
 

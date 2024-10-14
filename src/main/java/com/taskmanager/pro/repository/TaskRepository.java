@@ -91,7 +91,7 @@ public class TaskRepository {
     }
 
     // Обновление задачи.
-    public Task updateById(Task task, int id) {
+    public Task updateById(Task task) {
         String sql = new StringBuilder()
         .append("UPDATE tasks ")
         .append("SET name = ?, description = ?, urgency = ?, importance = ?, overdue = ?, planned_end_date_time = ?, modified_date_time = ? ")
@@ -104,15 +104,15 @@ public class TaskRepository {
                             task.getImportance(),
                             task.isOverdue(),
                             task.getPlannedEndDateTime(),
-                            LocalDateTime.now(), id);
+                            LocalDateTime.now(), task.getId());
 
         return task;
     }
 
     // Выделение задачи как "просроченной".
-    public Task updateOverdueById(Task task, int id) {
+    public Task updateOverdueById(Task task) {
         String sql = "UPDATE tasks SET overdue = 1 WHERE id = ?";
-        jdbc.update(sql, id);
+        jdbc.update(sql, task.getId());
         return task;
     }
 
