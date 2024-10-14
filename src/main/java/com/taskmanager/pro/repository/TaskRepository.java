@@ -9,18 +9,15 @@ import java.util.List;
 
 import com.taskmanager.pro.exception.IncorrectStatusException;
 import com.taskmanager.pro.model.Task;
-import com.taskmanager.pro.service.NotificationBuilder;
 
 @Repository
 public class TaskRepository {
     
     // Взаимодействие с БД.
     private final JdbcTemplate jdbc;
-    private final NotificationRepository notificationRepository;
     
-    public TaskRepository(JdbcTemplate jdbc, NotificationRepository notificationRepository) {
+    public TaskRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
-        this.notificationRepository = notificationRepository;
     }
 
     // Сохранение новой задачи.
@@ -127,7 +124,6 @@ public class TaskRepository {
     // Проверка срока исполнения задачи.
     public boolean checkOverdue(Task task) {
         if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now()) && !task.isOverdue()) {
-            notificationRepository.save(NotificationBuilder.createNotification(NotificationBuilder.createMessage(task)));
             return true;
         } else {
             return false;
