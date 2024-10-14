@@ -92,7 +92,6 @@ public class TaskRepository {
 
     // Обновление задачи.
     public Task updateById(Task task, int id) {
-        boolean overdue = checkOverdue(task);
         String sql = new StringBuilder()
         .append("UPDATE tasks ")
         .append("SET name = ?, description = ?, urgency = ?, importance = ?, overdue = ?, planned_end_date_time = ?, modified_date_time = ? ")
@@ -102,8 +101,8 @@ public class TaskRepository {
         jdbc.update(sql, task.getName(),
                             task.getDescription(),
                             task.isUrgency(),
-                            overdue,
                             task.getImportance(),
+                            task.isOverdue(),
                             task.getPlannedEndDateTime(),
                             LocalDateTime.now(), id);
 
