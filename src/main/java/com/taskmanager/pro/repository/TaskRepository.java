@@ -126,7 +126,7 @@ public class TaskRepository {
 
     // Проверка срока исполнения задачи.
     public boolean checkOverdue(Task task) {
-        if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now())) {
+        if (task.getPlannedEndDateTime() != null && task.getPlannedEndDateTime().isBefore(LocalDateTime.now()) && !task.isOverdue()) {
             notificationRepository.save(NotificationBuilder.createNotification(NotificationBuilder.createMessage(task)));
             return true;
         } else {
