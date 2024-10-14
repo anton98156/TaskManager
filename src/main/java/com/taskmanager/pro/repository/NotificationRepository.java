@@ -16,8 +16,8 @@ public class NotificationRepository {
     }
     
     public Notification save(Notification notification) {
-        String sql = "INSERT INTO notifications (name) VALUES (?)";
-        jdbc.update(sql, notification.getName());
+        String sql = "INSERT INTO notifications (message) VALUES (?)";
+        jdbc.update(sql, notification.getMessage());
         return notification;
     }
 

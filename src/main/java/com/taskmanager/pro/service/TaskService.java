@@ -4,16 +4,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import com.taskmanager.pro.model.Task;
+import com.taskmanager.pro.repository.NotificationRepository;
 import com.taskmanager.pro.repository.TaskRepository;
 
 @Service
-
 public class TaskService {
     
     private final TaskRepository taskRepository;
+    private final NotificationRepository notificationRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, NotificationRepository notificationRepository) {
         this.taskRepository = taskRepository;
+        this.notificationRepository = notificationRepository;
     }
 
     // Реализация методов репозитория.
@@ -65,6 +67,7 @@ public class TaskService {
         for (Task task : tasks) {
             if (taskRepository.checkOverdue(task)) {
                 taskRepository.updateOverdueById(task);
+                notificationRepository.save(NotificationBuilder.createNotification(NotificationBuilder.createMessage(task)));
             }
         }
     }

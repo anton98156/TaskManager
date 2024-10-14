@@ -6,6 +6,9 @@ import lombok.Data;
 public class Notification {
     
     private int id;
-    private String name;
+    private String message;
 
+    public Notification(String message) {
+        this.message = message;
+    }
 }
