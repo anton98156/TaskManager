@@ -9,7 +9,17 @@ function handleNotificationBodyClick() {
 }
 
 function redirectToggleRead(notificationId) {
-    window.location.href = '/notification/toggle-read/' + notificationId;
+    fetch('/notification/toggle-read/' + notificationId, {
+        method: 'POST'
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
