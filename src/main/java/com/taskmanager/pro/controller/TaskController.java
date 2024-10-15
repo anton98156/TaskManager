@@ -21,6 +21,12 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    // Переход на форму добавления задачи.
+    @GetMapping("/task-create")
+    public String createTaskForm(Task task) {
+        return "task-create";
+    }
+
     // Создание задачи.
     @PostMapping("/task-create")
     public String createTask(Task task) {
@@ -67,13 +73,6 @@ public class TaskController {
         model.addAttribute("task", task);
         return "task-open";
     }
-    
-
-    // Переход на форму добавления задачи.
-    @GetMapping("/task-create")
-    public String createTaskForm(Task task) {
-        return "task-create";
-    }
 
     // Перемещение задачи.
     @GetMapping("/task-move/{id}")
@@ -107,7 +106,7 @@ public class TaskController {
         return findEndpoint(status);
     }
 
-    // Установка статуса.
+    // Поиск статуса.
     private Task.Status checkStatus(int id) {
         Task.Status status = taskService.findById(id).getStatus();
         return status;
