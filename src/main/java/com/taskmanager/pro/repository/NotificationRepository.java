@@ -26,7 +26,7 @@ public class NotificationRepository {
 
     // Вывод всех уведомлений.
     public List<Notification> findAll() {
-        String sql = "SELECT * FROM notifications";
+        String sql = "SELECT * FROM notifications ORDER BY created_date_time DESC";
         return jdbc.query(sql, notificationRowMapper);
     }
 

@@ -18,6 +18,9 @@
             <p th:class="${notification.read} ? '' : 'menu__record--bold'">
                 <span class="menu--text-padding-left" th:text="${notification.message}"></span>
             </p>
+            <a style="margin-left: 10px;">
+                <span th:text="${#temporals.format(notification.createdDateTime, 'yyyy-MM-dd HH:mm')}"></span>
+            </a>
         </div>
         <br>
         <div th:if="${#lists.isEmpty(notifications)}">
