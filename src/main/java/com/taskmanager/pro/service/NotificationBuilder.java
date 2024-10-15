@@ -31,4 +31,12 @@ public class NotificationBuilder {
         List<Notification> notifications = notificationRepository.findAll();
         return notifications;
     }
+
+    public Notification findById(int id) {
+        return notificationRepository.findById(id);
+    }
+
+    public Notification toggleRead(Notification notification) {
+        return notificationRepository.toggleRead(notification);
+    }
 }

@@ -29,11 +29,18 @@ public class NotificationRepository {
         String sql = "SELECT * FROM notifications";
         return jdbc.query(sql, notificationRowMapper);
     }
-    
+
     // Поиск уведомления по ID.
     public Notification findById(int id) {
         String sql = "SELECT * FROM notifications WHERE id = ?";
         return jdbc.queryForObject(sql, notificationRowMapper, id);
+    }
+    
+    // Изменение статуса уведомления по ID.
+    public Notification toggleRead(Notification notification) {
+        String sql = "UPDATE notifications SET `read` = ? WHERE id = ?";
+        jdbc.update(sql, !notification.isRead(), notification.getId());
+        return notification;
     }
 
     private RowMapper<Notification> notificationRowMapper = (r, i) -> {

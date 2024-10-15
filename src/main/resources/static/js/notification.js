@@ -1,13 +1,17 @@
-function handleTaskBodyClick() {
+function handleNotificationBodyClick() {
     var notificationBodies = document.querySelectorAll('.menu__record');
     notificationBodies.forEach(function(body) {
         body.addEventListener('click', function() {
             var notificationId = body.getAttribute('data-id');
-            redirectToTaskOpenPage(notificationId);
+            redirectToggleRead(notificationId);
         });
     });
 }
 
-function redirectToTaskOpenPage(notificationId) {
-    window.location.href = '/task-open/' + notificationId;
+function redirectToggleRead(notificationId) {
+    window.location.href = '/notification/toggle-read/' + notificationId;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    handleNotificationBodyClick();
+});
