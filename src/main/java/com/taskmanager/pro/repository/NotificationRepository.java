@@ -24,10 +24,16 @@ public class NotificationRepository {
         return notification;
     }
 
-        // Вывод всех уведомлений.
+    // Вывод всех уведомлений.
     public List<Notification> findAll() {
         String sql = "SELECT * FROM notifications";
         return jdbc.query(sql, notificationRowMapper);
+    }
+    
+    // Поиск уведомления по ID.
+    public Notification findById(int id) {
+        String sql = "SELECT * FROM notifications WHERE id = ?";
+        return jdbc.queryForObject(sql, notificationRowMapper, id);
     }
 
     private RowMapper<Notification> notificationRowMapper = (r, i) -> {
@@ -37,6 +43,7 @@ public class NotificationRepository {
         rowObject.setId(r.getInt("id"));
         rowObject.setMessage(r.getString("message"));
         rowObject.setCreatedDateTime(r.getTimestamp("created_date_time").toLocalDateTime());
+        rowObject.setRead(r.getBoolean("read"));
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
