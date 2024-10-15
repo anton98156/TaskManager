@@ -29,7 +29,7 @@ public class NotificationController {
         return "notifications";
     }
 
-    // Переход для обновления статуса уведомления.
+    // Обновление статуса уведомления.
     @PostMapping("/notification/toggle-read/{id}")
     public String toggleReadById(@PathVariable int id) {
         Notification notification = notificationBuilder.findById(id);
