@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 import java.util.List;
 
+import com.taskmanager.pro.model.Notification;
 import com.taskmanager.pro.model.Task;
+import com.taskmanager.pro.service.NotificationBuilder;
 import com.taskmanager.pro.service.TaskService;
 
 
@@ -16,9 +18,11 @@ import com.taskmanager.pro.service.TaskService;
 public class TaskController {
     
     private final TaskService taskService;
+    private final NotificationBuilder notificationBuilder;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, NotificationBuilder notificationBuilder) {
         this.taskService = taskService;
+        this.notificationBuilder = notificationBuilder;
     }
 
     // Переход на форму добавления задачи.
@@ -38,7 +42,9 @@ public class TaskController {
     @GetMapping("/")
     public String findAll(Model model){
         List<Task> tasks = taskService.findAllActiveTasks();
+        List<Notification> notifications = notificationBuilder.findAll();
         model.addAttribute("tasks", tasks);
+        model.addAttribute("notifications", notifications);
         return "index";
     }
     

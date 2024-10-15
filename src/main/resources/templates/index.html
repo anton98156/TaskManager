@@ -13,8 +13,11 @@
                 <img class="header__icon" src="/favicon.ico" alt="Менеджер задач">
             </a>
             <h1 class="header--leftward">Менеджер задач</h1>
+
             <a class="button" href="/notifications">
-                <img class="header__icon" src="/images/notificationsEmpty.png" alt="Уведомления">
+                <img class="header__icon" 
+                    th:src="${notifications.?[read == false].size() > 0 ? '/images/notificationsNotEmpty.png' : '/images/notificationsEmpty.png'}" 
+                    alt="Уведомления">
             </a>
             <a class="button" href="/important-tasks">
                 <img class="header__icon" src="/images/importance.png" alt="Важные задачи">
