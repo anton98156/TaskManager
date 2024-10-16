@@ -12,7 +12,7 @@
             <a class="button" href="/">
                 <img class="header__icon" src="/favicon.ico" alt="Менеджер задач">
             </a>
-            <h1 class="header--leftward">Менеджер задач</h1>
+            <h1 id="header-title" class="header--leftward">Менеджер задач</h1>
             <a class="button" href="/notifications">
                     <img class="header__icon"
                     th:src="${notifications != null && notifications.?[read == false].size() > 0 ? '/images/notificationsNotEmpty.png' : '/images/notificationsEmpty.png'}"

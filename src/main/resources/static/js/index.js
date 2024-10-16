@@ -36,8 +36,22 @@ function addTaskButtonBehavior() {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
     addTaskButtonBehavior();
     handleTaskBodyClick();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const currentLocation = window.location.pathname;
+    const headerTitle = document.getElementById('header-title');
+
+    if (currentLocation === '/important-tasks') {
+        headerTitle.textContent = 'Важные задачи';
+    } else if (currentLocation === '/urgent-tasks') {
+        headerTitle.textContent = 'Срочные задачи';
+    }
+    else if (currentLocation === '/') {
+        headerTitle.textContent = 'Менеджер задач';
+    }
 });
