@@ -63,7 +63,7 @@ public class TaskService {
     }
 
     // Выделение задач с превышением срока исполнения как "просроченных".
-    private void updateTasksOverdue(List<Task> tasks) {
+    public void updateTasksOverdue(List<Task> tasks) {
         for (Task task : tasks) {
             if (taskRepository.checkOverdue(task)) {
                 taskRepository.updateOverdueById(task);

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.taskmanager.pro.model.Task;
+import com.taskmanager.pro.repository.NotificationRepository;
 import com.taskmanager.pro.repository.TaskRepository;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class TaskServiceTest {
     @Mock
     private TaskRepository taskRepository;
 
+    @Mock
+    private NotificationRepository notificationRepository;
+
     @InjectMocks
     private TaskService taskService;
 
@@ -30,6 +34,23 @@ public class TaskServiceTest {
     @BeforeEach
     public void setUp() {
         task = new Task();
+        task.setId(1);
+        task.setName("Test");
+        task.setDescription("Test task for unit test");
+    }
+
+    // Вспомогательный метод для повышения читаемости кода.
+    private List<Task> createTaskList(Task task) {
+        List<Task> taskList = new ArrayList<>();
+        taskList.add(task);
+        return taskList;
+    }
+
+    // Вспомогательный метод для повышения читаемости кода.
+    private void verifyTaskProperties(Task expectedTask, Task actualTask) {
+        assertNotNull(actualTask);
+        assertEquals(expectedTask, actualTask);
+        assertEquals(expectedTask.getStatus(), actualTask.getStatus());
     }
 
     @Test
@@ -38,22 +59,100 @@ public class TaskServiceTest {
 
         Task savedTask = taskService.saveTask(task);
 
-        assertNotNull(savedTask);
-        assertEquals(task, savedTask);
+        verifyTaskProperties(task, savedTask);
         verify(taskRepository, times(1)).save(task);
     }
 
     @Test
     public void testFindAllActiveTasks() {
-        List<Task> activeTasks = new ArrayList<>();
-        activeTasks.add(task);
-        when(taskRepository.findAllActiveTasks()).thenReturn(activeTasks);
+        when(taskRepository.findAllActiveTasks()).thenReturn(createTaskList(task));
 
         List<Task> tasks = taskService.findAllActiveTasks();
 
         assertNotNull(tasks);
         assertEquals(1, tasks.size());
-        assertEquals(task, tasks.get(0));
+        verifyTaskProperties(task, tasks.get(0));
         verify(taskRepository, times(1)).findAllActiveTasks();
     }
+
+    @Test
+    public void testFindAllActiveImportantTasks() {
+        task.setImportance(true);
+        when(taskRepository.findAllActiveImportantTasks()).thenReturn(createTaskList(task));
+
+        List<Task> tasks = taskService.findAllActiveImportantTasks();
+
+        assertNotNull(tasks);
+        assertEquals(1, tasks.size());
+        verifyTaskProperties(task, tasks.get(0));
+        assertTrue(tasks.get(0).getImportance());
+        verify(taskRepository, times(1)).findAllActiveImportantTasks();
+    }
+
+    @Test
+    public void testFindAllActiveUrgentTasks() {
+        task.setUrgency(true);
+        when(taskRepository.findAllActiveUrgentTasks()).thenReturn(createTaskList(task));
+
+        List<Task> tasks = taskService.findAllActiveUrgentTasks();
+
+        assertNotNull(tasks);
+        assertEquals(1, tasks.size());
+        verifyTaskProperties(task, tasks.get(0));
+        assertTrue(tasks.get(0).isUrgency());
+        verify(taskRepository, times(1)).findAllActiveUrgentTasks();
+    }
+
+    @Test
+    public void testFindAllCompletedTasks() {
+        task.setStatus(Task.Status.COMPLETED);
+        when(taskRepository.findAllCompletedTasks()).thenReturn(createTaskList(task));
+
+        List<Task> tasks = taskService.findAllCompletedTasks();
+
+        assertNotNull(tasks);
+        assertEquals(1, tasks.size());
+        verifyTaskProperties(task, tasks.get(0));
+        verify(taskRepository, times(1)).findAllCompletedTasks();
+    }
+
+    @Test
+    public void testFindById() {
+        when(taskRepository.findById(1)).thenReturn(task);
+
+        Task savedTask = taskService.findById(1);
+
+        verifyTaskProperties(task, savedTask);
+        verify(taskRepository, times(1)).findById(1);
+    }
+
+    @Test
+    public void testMoveById() {
+        taskService.moveById(1);
+        verify(taskRepository, times(1)).moveById(1);
+    }
+
+    @Test
+    public void testUpdateById() {
+        task.setName("Updated Test");
+        task.setDescription("Updated description");
+
+        taskService.updateById(task);
+        verify(taskRepository, times(1)).updateById(task);
+        when(taskRepository.findById(1)).thenReturn(task);
+
+        Task updatedTask = taskService.findById(1);
+
+        assertNotNull(updatedTask);
+        assertEquals("Updated Test", updatedTask.getName());
+        assertEquals("Updated description", updatedTask.getDescription());
+        verify(taskRepository, times(1)).findById(1);
+    }
+
+    @Test
+    public void testDeleteById() {
+        taskService.deleteById(1);
+        verify(taskRepository, times(1)).deleteById(1);
+    }
+
 }
