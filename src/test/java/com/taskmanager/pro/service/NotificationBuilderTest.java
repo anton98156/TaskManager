@@ -3,6 +3,9 @@ package com.taskmanager.pro.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,6 +26,7 @@ public class NotificationBuilderTest {
     @InjectMocks
     private NotificationBuilder notificationBuilder;
     private Task task;
+    private Notification notification;
 
     @BeforeEach
     public void setUp() {
@@ -30,23 +34,43 @@ public class NotificationBuilderTest {
         task.setId(1);
         task.setName("Test Task");
         task.setDescription("Description of test task");
+
+        notification = new Notification();
+        notification.setId(1);
+        notification.setMessage(String.format("Истек срок исполнения по задаче: '%s'.", task.getName()));
+    }
+
+        // Вспомогательный метод для повышения читаемости кода.
+    private List<Notification> createNotificationsList(Notification notification) {
+        List<Notification> notificationsList = new ArrayList<>();
+        notificationsList.add(notification);
+        return notificationsList;
     }
 
     @Test
     public void testCreateNotification() {
-        String message = "Истек срок исполнения по задаче: 'Test Task'.";
-        Notification notification = notificationBuilder.createNotification(String.format("Истек срок исполнения по задаче: '%s'.", task.getName()));
+        Notification actualNotification = notificationBuilder.createNotification(notificationBuilder.createMessage(task));
 
-        assertNotNull(notification);
-        assertEquals(message, notification.getMessage());
+        assertNotNull(actualNotification);
+        assertEquals(notification.getMessage(), actualNotification.getMessage());
     }
 
     @Test
     public void testCreateMessage() {
-        String expectedMessage = "Истек срок исполнения по задаче: 'Test Task'.";
         String actualMessage = notificationBuilder.createMessage(task);
 
         assertNotNull(actualMessage);
-        assertEquals(expectedMessage, actualMessage);
+        assertEquals(notification.getMessage(), actualMessage);
+    }
+
+    @Test
+    public void testFindAll() {
+        when(notificationRepository.findAll()).thenReturn(createNotificationsList(notification));
+
+        List<Notification> notifications = notificationBuilder.findAll();
+
+        assertNotNull(notifications);
+        assertEquals(1, notifications.size());
+        verify(notificationRepository, times(1)).findAll();
     }
 }
