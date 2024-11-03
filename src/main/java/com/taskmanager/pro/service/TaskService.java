@@ -12,10 +12,12 @@ public class TaskService {
     
     private final TaskRepository taskRepository;
     private final NotificationRepository notificationRepository;
+    private final NotificationBuilder notificationBuilder;
 
-    public TaskService(TaskRepository taskRepository, NotificationRepository notificationRepository) {
+    public TaskService(TaskRepository taskRepository, NotificationRepository notificationRepository, NotificationBuilder notificationBuilder) {
         this.taskRepository = taskRepository;
         this.notificationRepository = notificationRepository;
+        this.notificationBuilder = notificationBuilder;
     }
 
     // Реализация методов репозитория.
@@ -67,7 +69,7 @@ public class TaskService {
         for (Task task : tasks) {
             if (taskRepository.checkOverdue(task)) {
                 taskRepository.updateOverdueById(task);
-                notificationRepository.save(NotificationBuilder.createNotification(NotificationBuilder.createMessage(task)));
+                notificationRepository.save(notificationBuilder.createNotification(notificationBuilder.createMessage(task)));
             }
         }
     }
