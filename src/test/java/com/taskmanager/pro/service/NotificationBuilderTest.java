@@ -10,34 +10,43 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.taskmanager.pro.model.Notification;
 import com.taskmanager.pro.model.Task;
 import com.taskmanager.pro.repository.NotificationRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class NotificationBuilderTest {
-    
+
     @Mock
     private NotificationRepository notificationRepository;
 
     @InjectMocks
     private NotificationBuilder notificationBuilder;
-
     private Task task;
 
     @BeforeEach
     public void setUp() {
         task = new Task();
         task.setId(1);
-        task.setName("Task for test");
+        task.setName("Test Task");
+        task.setDescription("Description of test task");
+    }
+
+    @Test
+    public void testCreateNotification() {
+        String message = "Истек срок исполнения по задаче: 'Test Task'.";
+        Notification notification = notificationBuilder.createNotification(String.format("Истек срок исполнения по задаче: '%s'.", task.getName()));
+
+        assertNotNull(notification);
+        assertEquals(message, notification.getMessage());
     }
 
     @Test
     public void testCreateMessage() {
-        when(notificationBuilder.createMessage(task)).thenReturn("Истек срок исполнения по задаче: 'Task for test'.");
+        String expectedMessage = "Истек срок исполнения по задаче: 'Test Task'.";
+        String actualMessage = notificationBuilder.createMessage(task);
 
-        String createdString = notificationBuilder.createMessage(task);
-
-        assertNotNull(createdString);
-        assertEquals("Истек срок исполнения по задаче: 'Task for test'.", createdString);
+        assertNotNull(actualMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 }

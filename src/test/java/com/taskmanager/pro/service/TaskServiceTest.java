@@ -1,7 +1,6 @@
 package com.taskmanager.pro.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 import com.taskmanager.pro.model.Task;
@@ -31,6 +30,9 @@ public class TaskServiceTest {
     @Mock
     private NotificationRepository notificationRepository;
 
+    @Mock
+    private NotificationBuilder notificationBuilder;
+
     @InjectMocks
     private TaskService taskService;
     private Task task;
@@ -44,7 +46,7 @@ public class TaskServiceTest {
     public void initializeTask() {
         task = new Task();
         task.setId(1);
-        task.setName("Test");
+        task.setName("Test Task");
         task.setDescription("Test task for unit test");
     }
 
@@ -170,13 +172,18 @@ public class TaskServiceTest {
         task.setOverdue(false);
         List<Task> tasks = List.of(task);
 
-        // Настройка мока для возвращения "просрока" для задачи.
+        // Настройка мока для проверки "просрока" задачи, создания сообщения и объекта уведомления.
         when(taskRepository.checkOverdue(task)).thenReturn(true);
+        String message = "Истек срок исполнения по задаче: 'Test Task'.";
+        when(notificationBuilder.createMessage(task)).thenReturn(message);
+        Notification notification = new Notification(message);
+        when(notificationBuilder.createNotification(message)).thenReturn(notification);
 
         taskService.updateTasksOverdue(tasks);
 
+        // Проверка, что статус задачи обновлен и уведомление сохранено.
         verify(taskRepository).updateOverdueById(task);
-        verify(notificationRepository).save(any(Notification.class));
+        verify(notificationRepository).save(notification);
     }
 
 }
