@@ -1,20 +1,25 @@
 package com.taskmanager.pro.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 import com.taskmanager.pro.model.Task;
+import com.taskmanager.pro.model.Notification;
 import com.taskmanager.pro.repository.NotificationRepository;
 import com.taskmanager.pro.repository.TaskRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,11 +33,15 @@ public class TaskServiceTest {
 
     @InjectMocks
     private TaskService taskService;
-
     private Task task;
 
+    @BeforeAll
+    static void initializeMocks() {
+        MockitoAnnotations.openMocks(TaskServiceTest.class);
+    }
+
     @BeforeEach
-    public void setUp() {
+    public void initializeTask() {
         task = new Task();
         task.setId(1);
         task.setName("Test");
@@ -153,6 +162,21 @@ public class TaskServiceTest {
     public void testDeleteById() {
         taskService.deleteById(1);
         verify(taskRepository, times(1)).deleteById(1);
+    }
+
+    @Test
+    void testUpdateTasksOverdue() {
+        task.setPlannedEndDateTime(LocalDateTime.now().minusDays(1));
+        task.setOverdue(false);
+        List<Task> tasks = List.of(task);
+
+        // Настройка мока для возвращения "просрока" для задачи.
+        when(taskRepository.checkOverdue(task)).thenReturn(true);
+
+        taskService.updateTasksOverdue(tasks);
+
+        verify(taskRepository).updateOverdueById(task);
+        verify(notificationRepository).save(any(Notification.class));
     }
 
 }
