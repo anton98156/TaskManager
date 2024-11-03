@@ -63,7 +63,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    void testSaveTask() {
+    public void testSaveTask() {
         when(taskRepository.save(task)).thenReturn(task);
 
         Task savedTask = taskService.saveTask(task);
@@ -165,7 +165,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    void testUpdateTasksOverdue() {
+    public void testUpdateTasksOverdue() {
         task.setPlannedEndDateTime(LocalDateTime.now().minusDays(1));
         task.setOverdue(false);
         List<Task> tasks = List.of(task);
