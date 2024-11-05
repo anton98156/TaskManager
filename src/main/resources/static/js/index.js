@@ -3,18 +3,18 @@ function handleTaskBodyClick() {
     taskBodies.forEach(function(body) {
         var taskId = body.getAttribute('data-id');
 
-        // Переход по клику на весь блок, кроме кнопок
+        // Переход в задачу.
         body.addEventListener('click', function(event) {
             if (!event.target.closest('.button')) {
                 redirectToTaskOpenPage(taskId);
             }
         });
 
-        // Обработчик для кнопки удаления
+        // Обработчик для кнопки удаления.
         var deleteButton = body.querySelector('#button-delete');
         deleteButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Предотвращает переход по ссылке
-            event.stopPropagation(); // Предотвращает выполнение других обработчиков на этом элементе
+            event.preventDefault(); // Предотвращает переход по ссылке.
+            event.stopPropagation(); // Предотвращает выполнение других обработчиков на этом элементе.
             redirectDeleteTask(taskId);
         });
     });
