@@ -105,7 +105,7 @@ public class TaskController {
     }
 
     // Удаление задачи.
-    @GetMapping("/task-delete/{id}")
+    @PostMapping("/task-delete/{id}")
     public String deleteTask(@PathVariable int id) {
         Task.Status status = checkStatus(id);
         taskService.deleteById(id);

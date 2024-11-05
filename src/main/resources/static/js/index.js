@@ -1,15 +1,41 @@
 function handleTaskBodyClick() {
     var taskBodies = document.querySelectorAll('.menu__record');
     taskBodies.forEach(function(body) {
-        body.addEventListener('click', function() {
-            var taskId = body.getAttribute('data-id');
-            redirectToTaskOpenPage(taskId);
+        var taskId = body.getAttribute('data-id');
+
+        // Переход по клику на весь блок, кроме кнопок
+        body.addEventListener('click', function(event) {
+            if (!event.target.closest('.button')) {
+                redirectToTaskOpenPage(taskId);
+            }
+        });
+
+        // Обработчик для кнопки удаления
+        var deleteButton = body.querySelector('#button-delete');
+        deleteButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращает переход по ссылке
+            event.stopPropagation(); // Предотвращает выполнение других обработчиков на этом элементе
+            redirectDeleteTask(taskId);
         });
     });
 }
 
 function redirectToTaskOpenPage(taskId) {
     window.location.href = '/task-open/' + taskId;
+}
+
+function redirectDeleteTask(taskId) {
+    fetch('/task-delete/' + taskId, {
+        method: 'POST'
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function addTaskButtonBehavior() {
