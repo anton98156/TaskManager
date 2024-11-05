@@ -61,10 +61,10 @@
         <div class="task__group">
             <a class="task__submit" style="margin-top: 20px;" th:href="@{/task-update/{id}(id=${task.id})}">Обновить</a>
             <a class="task__submit" style="margin-bottom: 15px;" th:href="@{/task-delete/{id}(id=${task.id})}" 
-               id="button-delete" th:attr="data-id=${task.id}">Удалить</a>
+                id="button-delete" th:attr="data-id=${task.id}">Удалить</a>
             <br>
             <a class="task__submit" th:href="@{/task-move/{id}(id=${task.id})}" 
-               th:text="${task.status.name() == 'ACTIVE' ? 'Завершить' : 'Вернуть'}"></a>
+                th:text="${task.status.name() == 'ACTIVE' ? 'Завершить' : 'Вернуть'}"></a>
         </div>
     </form>
     <script th:src="@{/js/task.js}"></script>
